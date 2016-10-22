@@ -7,6 +7,7 @@ class App extends Component {
   constructor(){
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.doodles = [];
   }
   handleSubmit(e){
     console.log(this,e);
