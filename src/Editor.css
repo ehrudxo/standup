@@ -1,0 +1,39 @@
+/*placeholder*/
+[contenteditable=true]:empty:before{
+  content: attr(placeholder);
+  color: #aaa;
+  display: block; /* For Firefox */
+}
+.wrapEditor{
+  padding : 0px;
+  border: 1px solid #dddfe2;
+  margin: 10px;
+  border-radius: 0 0 3px 3px;
+  background-color: #f6f7f9;
+}
+
+.textEditor{
+  width:100%;
+  min-height: 100px;
+  background-color: white;
+  border-bottom: 1px solid #dddfe2;
+}
+.textEditor .innerEdit{
+  text-align: left;
+  color: #1d2129;
+  padding:20px;
+  min-height: 90px;
+}
+.actionBar{
+  min-height: 40px;
+}
+.upload{
+  width:100px;
+  height: 30px;
+  margin: 5px;
+  float:right;
+  color: white;
+  background-color: #02B875;
+  border-radius: 3px 3px 3px 3px;
+  border: 0px;
+}

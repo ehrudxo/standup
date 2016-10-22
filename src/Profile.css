@@ -1,0 +1,28 @@
+.anonymous{
+  text-align: left;
+  background-color: white;
+  border-bottom: 1px solid #dddfe2;
+  width :100%;
+  height: 50px;
+}
+.anonymous_img_wrap{
+  text-align: right;
+  border-radius: 50%;
+  display: inline;
+  float: right;
+}
+.anonymous_img{
+  border-radius: 50%;
+  height: 35px;
+  padding: 5px;
+}
+.anonymous_name{
+  padding-right: 10px;
+  float: right;
+  margin-top: 17px;
+}
+.today_title{
+  float: left;
+  margin-top: 17px;
+  padding-left: 10px;
+}
