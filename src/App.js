@@ -6,11 +6,11 @@ import Editor from './Editor'
 class App extends Component {
   constructor(){
     super();
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.submit = this.submit.bind(this);
     this.doodles = [];
   }
-  handleSubmit(e){
-    console.log(this,e);
+  submit(content){
+    console.log(content);
   }
   isAnonymous(){
     return true;
