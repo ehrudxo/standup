@@ -5,19 +5,16 @@ import Profile from './Profile';
 class Editor extends Component {
   constructor(props){
     super(props);
-    this.detectURL = this.detectURL.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onPaste = this.onPaste.bind(this);
     this.editorChange = this.editorChange.bind(this);
     this.getCard = this.getCard.bind(this);
     this.hasValue = this.hasValue.bind(this);
+    this.detectURL = this.detectURL.bind(this);
     this.state ={
       embedlyUrl : undefined,
       content : undefined
     }
-  }
-  detectURL(text){
-    return (text.match(/(https?:\/\/[^\s]+)/g)||text.match(/(www.[^\s]+)/g));
   }
   onPaste(event){
     event.clipboardData.items[0].getAsString(text=>{
@@ -31,7 +28,7 @@ class Editor extends Component {
     if(!this.state.embedlyUrl&&
         (event.keyCode===32||event.keyCode===13)&&
         checkText){
-      this.setState({embedlyUrl:checkText,content:this.state.content});
+      this.setState({embedlyUrl:checkText,content:event.currentTarget.textContent});
     }else{
       this.setState({content:event.currentTarget.textContent});
     }
@@ -51,7 +48,12 @@ class Editor extends Component {
   handleSubmit(event){
     this.props.submit();
   }
+  detectURL(text){
+    //(text.match(/(https?:\/\/[^\s]+)/g)||text.match(/(www.[^\s]+)/g))
+    return undefined;
+  }
   render() {
+    console.log(this.state);
     return (
       <div className="wrapEditor">
         <Profile isAnonymous={this.props.isAnonymous}/>
