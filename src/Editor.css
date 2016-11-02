@@ -37,3 +37,6 @@
   border-radius: 3px 3px 3px 3px;
   border: 0px;
 }
+.upload:disabled{
+  background-color: #aaa;
+}

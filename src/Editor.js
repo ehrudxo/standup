@@ -10,8 +10,10 @@ class Editor extends Component {
     this.onPaste = this.onPaste.bind(this);
     this.editorChange = this.editorChange.bind(this);
     this.getCard = this.getCard.bind(this);
+    this.hasValue = this.hasValue.bind(this);
     this.state ={
-      embedlyUrl : undefined
+      embedlyUrl : undefined,
+      content : undefined
     }
   }
   detectURL(text){
@@ -43,6 +45,9 @@ class Editor extends Component {
       return(<div/>);
     }
   }
+  hasValue(value){
+    return (!value)?false:(value.trim()===""?false:true);
+  }
   handleSubmit(event){
     this.props.submit();
   }
@@ -59,7 +64,9 @@ class Editor extends Component {
           {this.getCard(this.state.embedlyUrl)}
         </div>
         <div className="actionBar">
-          <button className="upload" onClick={this.handleSubmit}><span>스탠드업!</span></button>
+          <button className="upload"
+            disabled={!this.hasValue(this.state.content)}
+            onClick={this.handleSubmit}><span>스탠드업!</span></button>
         </div>
       </div>
     );

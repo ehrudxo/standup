@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './img/stand_up_logo.png';
 import './App.css';
 import Editor from './Editor'
+// import config from './config'
+// console.log(config.apiKey); // 여기 주석은 일부러 남겨 두었습니다. 변화를 확인하세요.
 
 class App extends Component {
   constructor(){
@@ -10,7 +12,9 @@ class App extends Component {
     this.doodles = [];
   }
   submit(content){
-    console.log(content);
+    if(content){
+      console.log(content);
+    }
   }
   isAnonymous(){
     return true;
