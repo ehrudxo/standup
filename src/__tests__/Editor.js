@@ -1,13 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import Editor from '../Editor';
 let ed = new Editor;
-it('detect URL ', () => {
-  expect(ed.detectURL("my www.daum.net ")).toEqual(["www.daum.net"]);
-  expect(ed.detectURL("http://www.naver.com is 지식인 www.mlbpark.com")).toEqual(["http://www.naver.com"]);
-  expect(ed.detectURL("www.naver.com is 지식인 http://www.mlbpark.com")).toEqual(["http://www.mlbpark.com"]);
+it('detect URL 1', () => {
+  expect(ed.detectURL("my www.devpools.kr ")).toEqual("www.devpools.kr");
+});
+it('detect URL 2', () => {
+  expect(ed.detectURL("http://www.devpools.kr 는 www.github.com 의 내용이 전부 궁금하다")).toEqual("http://www.devpools.kr");
+});
+it('detect URL 3', () => {
+  expect(ed.detectURL("www.github.com 에 관해서는 http://www.devpools.kr 이 전문가다")).toEqual("http://www.devpools.kr");
 });
 
-// it('hasValue ',()=>{
-//   expect(ed.hasValue("1")).toEqual(true);
-// });
+it('hasValue 1',()=>{
+  expect(ed.hasValue(1)).toEqual(false);
+});
+it('hasValue 2',()=>{
+  expect(ed.hasValue(new Date)).toEqual(false);
+});
+it('hasValue 3',()=>{
+  expect(ed.hasValue("1")).toEqual(true);
+});
+it('hasValue 4',()=>{
+  expect(ed.hasValue()).toEqual(false);
+});

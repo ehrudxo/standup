@@ -43,17 +43,19 @@ class Editor extends Component {
     }
   }
   hasValue(value){
-    return (!value)?false:(value.trim()===""?false:true);
+    if((value && (typeof value) === "string"))
+      return (!value)?false:(value.trim()===""?false:true);
+    else return false;
   }
   handleSubmit(event){
     this.props.submit();
   }
   detectURL(text){
-    //(text.match(/(https?:\/\/[^\s]+)/g)||text.match(/(www.[^\s]+)/g))
-    return undefined;
+    var urls = text.match(/(https?:\/\/[^\s]+)/g)||text.match(/(www.[^\s]+)/g);
+    if(urls.length>0) return urls[0];
+    else return undefined;
   }
   render() {
-    console.log(this.state);
     return (
       <div className="wrapEditor">
         <Profile isAnonymous={this.props.isAnonymous}/>
