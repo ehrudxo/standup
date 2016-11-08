@@ -15,25 +15,28 @@ it('Object assign', function(){
   //article1의 값이 잘 전달되었는지 확인.
   expect(article1.urls[0].imgWidth).toEqual(article2.urls[0].imgWidth);
 })
-it('list article', function(){
-  dao.list(25).once('value',(dataSnapshots)=>{
-    dataSnapshots.forEach((dataSnapshot)=>{
-      keys.push(dataSnapshot.key);
-      var article = dataSnapshot.val();
+it('list article', ()=>{
+  dao.list(25).then((articles)=>{
+    articles.forEach((articles)=>{
+      keys.push(articles.key);
+      var article = articles.val();
       expect(article.user).toEqual("Genji");
     })
   });
 })
 
-it('upload article and edit',function(){
+it('upload article and edit',()=>{
   let key = dao.newKey();
-  var updated = dao.update( key, article1 );
-  dao.getArticle(key).on('value',(snapShot)=>{
-    expect(snapShot.key).toEqual(key);
-    // dao.update(key, article2);
-    dao.remove(key);
+  console.log(key);
+  dao.update( key, article1 ).then((articleSet)=>{
+    console.log(articleSet);
+    dao.getArticle(key).then((article)=>{
+      expect(article.key).toEqual(key);
+      // dao.update(key, article2);
+      dao.remove(key);
+    });
   });
-  return updated;
+
 });
 /* 동기화 문제 때문인지 제대로 동작하지 않는다.
 it('remove all ', function(){

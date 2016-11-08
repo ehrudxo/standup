@@ -36,12 +36,11 @@ class App extends Component {
     return lis;
   }
   componentWillMount() {
-    this.dao.list(25).on('value',(dataSnapshots)=>{
+    this.dao.list(25).then((articles)=>{
       var items = [];
-      dataSnapshots.forEach(function(dataSnapshot){
-        var item = dataSnapshot.val();
-        item['key'] = dataSnapshot.key;
-        console.log(dataSnapshot.val());
+      articles.forEach(function(article){
+        var item = article.val();
+        item['key'] = article.key;
         items.push(item);
       })
       if(items && items.length>0){
@@ -60,7 +59,7 @@ class App extends Component {
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </div>
-        <Editor handleSubmit={this.submit} isAnonymous={this.isAnonymous}/>
+        <Editor submit={this.submit} isAnonymous={this.isAnonymous}/>
         <ul>
         {this.getArticles()}
         </ul>

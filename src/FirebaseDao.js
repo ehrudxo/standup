@@ -11,14 +11,20 @@ export default class FirebaseDao {
     return firebase.database().ref().child('posts').push(postData);
   }
   update(key,postData){
-    var updates = {};
-    updates['/posts/' + key] = postData;
-    updates['/user-posts/genji/' + key] = postData;
-    return firebase.database().ref().update(updates);
+    return new Promise(resolve=>{
+      var updates = {};
+      updates['/posts/' + key] = postData;
+      updates['/user-posts/genji/' + key] = postData;
+      firebase.database().ref().update(updates);
+      resolve(updates);
+    });
   }
   remove(key){
-    firebase.database().ref('/posts/').child(key).remove();
-    return firebase.database().ref('/user-posts/genji/').child(key).remove();
+    return new Promise(resolve=>{
+      firebase.database().ref('/posts/').child(key).remove();
+      firebase.database().ref('/user-posts/genji/').child(key).remove();
+      resolve(key);
+    });
   }
   off(){
     return firebase.database().ref().off();
@@ -27,10 +33,19 @@ export default class FirebaseDao {
     return firebase.database().ref().child('posts').push().key;
   }
   list(pagesize){
-    return firebase.database().ref('/posts/')
-            .orderByKey().limitToLast(pagesize);
+    return new Promise(resolve=>{
+      firebase.database().ref('/posts/')
+              .orderByKey().limitToLast(pagesize)
+              .on('value',(dataSnapshots)=>{
+                resolve(dataSnapshots);
+              })
+    });
   }
   getArticle(key){
-    return firebase.database().ref( + key);
+    return new Promise(resolve=>{
+      firebase.database().ref( + key).on('value',(article)=>{
+        resolve(article);
+      });
+    });
   }
 }
