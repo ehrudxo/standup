@@ -11,13 +11,10 @@ export default class FirebaseDao {
     return firebase.database().ref().child('posts').push(postData);
   }
   update(key,postData){
-    return new Promise(resolve=>{
-      var updates = {};
-      updates['/posts/' + key] = postData;
-      updates['/user-posts/genji/' + key] = postData;
-      firebase.database().ref().update(updates);
-      resolve(updates);
-    });
+    var updates = {};
+    updates['/posts/' + key] = postData;
+    updates['/user-posts/genji/' + key] = postData;
+    return firebase.database().ref().update(updates);
   }
   remove(key){
     return new Promise(resolve=>{
@@ -44,6 +41,7 @@ export default class FirebaseDao {
   getArticle(key){
     return new Promise(resolve=>{
       firebase.database().ref( + key).on('value',(article)=>{
+        console.log(article);
         resolve(article);
       });
     });

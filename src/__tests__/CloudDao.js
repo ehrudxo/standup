@@ -24,19 +24,20 @@ it('list article', ()=>{
     })
   });
 })
-
-it('upload article and edit',()=>{
-  let key = dao.newKey();
+var key;
+it('upload article and edit',async ()=>{
+  key = dao.newKey();
+  const promise1 = await dao.update( key, article1 );
+  return promise1;
+});
+it('find and delete',async ()=>{
   console.log(key);
-  dao.update( key, article1 ).then((articleSet)=>{
-    console.log(articleSet);
-    dao.getArticle(key).then((article)=>{
-      expect(article.key).toEqual(key);
-      // dao.update(key, article2);
-      dao.remove(key);
-    });
+  return dao.getArticle(key).then((article)=>{
+    console.log(article.key,key);
+    expect(article.key).toEqual(key);
+    // dao.update(key, article2);
+    dao.remove(key);
   });
-
 });
 /* 동기화 문제 때문인지 제대로 동작하지 않는다.
 it('remove all ', function(){
