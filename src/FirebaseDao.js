@@ -33,17 +33,18 @@ export default class FirebaseDao {
     return new Promise(resolve=>{
       firebase.database().ref('/posts/')
               .orderByKey().limitToLast(pagesize)
-              .on('value',(dataSnapshots)=>{
-                resolve(dataSnapshots);
+              .on('value',(articles)=>{
+                resolve(articles);
               })
     });
   }
   getArticle(key){
     return new Promise(resolve=>{
-      firebase.database().ref( + key).on('value',(article)=>{
-        console.log(article);
-        resolve(article);
-      });
+      firebase.database().ref('/posts/'+key)
+              .on('value',(articles)=>{
+                resolve(articles);
+              })
     });
   }
+  
 }

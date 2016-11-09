@@ -17,10 +17,10 @@ it('Object assign', function(){
 })
 it('list article', ()=>{
   dao.list(25).then((articles)=>{
-    articles.forEach((articles)=>{
-      keys.push(articles.key);
-      var article = articles.val();
-      expect(article.user).toEqual("Genji");
+    articles.forEach((article)=>{
+      keys.push(article.key);
+      var article_v = article.val();
+      expect(article_v.user).toEqual("Genji");
     })
   });
 })
@@ -31,13 +31,11 @@ it('upload article and edit',async ()=>{
   return promise1;
 });
 it('find and delete',async ()=>{
-  console.log(key);
-  return dao.getArticle(key).then((article)=>{
-    console.log(article.key,key);
-    expect(article.key).toEqual(key);
-    // dao.update(key, article2);
+  const article = await dao.getArticle(key);
+  expect(article.key).toEqual(key);
+  if(article.key===key){
     dao.remove(key);
-  });
+  }
 });
 /* 동기화 문제 때문인지 제대로 동작하지 않는다.
 it('remove all ', function(){
