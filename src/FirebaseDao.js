@@ -29,14 +29,17 @@ export default class FirebaseDao {
   newKey(){
     return firebase.database().ref().child('posts').push().key;
   }
-  list(pagesize){
-    return new Promise(resolve=>{
-      firebase.database().ref('/posts/')
+  /**
+  * Promise를 호출하게 되면 이벤트가 등록된 부분이 사라기제 된다.
+  */
+  list(pagesize,callback){
+    // return new Promise(resolve=>{
+      firebase.database().ref('posts')
               .orderByKey().limitToLast(pagesize)
               .on('value',(articles)=>{
-                resolve(articles);
+                callback(articles);
               })
-    });
+    // });
   }
   getArticle(key){
     return new Promise(resolve=>{
@@ -46,5 +49,5 @@ export default class FirebaseDao {
               })
     });
   }
-  
+
 }

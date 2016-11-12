@@ -2,7 +2,7 @@
 import firebase from 'firebase'
 import FirebaseDao from '../FirebaseDao'
 import config from '../config'
-import Article from '../Article';
+import Article from './Article';
 var article1 = Article();
 var dao = new FirebaseDao(config);
 var keys=[];
@@ -16,7 +16,7 @@ it('Object assign', function(){
   expect(article1.urls[0].imgWidth).toEqual(article2.urls[0].imgWidth);
 })
 it('list article', ()=>{
-  dao.list(25).then((articles)=>{
+  dao.list(25,(articles)=>{
     articles.forEach((article)=>{
       keys.push(article.key);
       var article_v = article.val();

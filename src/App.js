@@ -4,6 +4,7 @@ import './App.css';
 import Editor from './Editor'
 import FirebaseDao from './FirebaseDao'
 import config from './config'
+import CardList from './CardList'
 
 /*
 * App Component
@@ -13,7 +14,6 @@ class App extends Component {
     super();
     this.dao = new FirebaseDao(config);
     this.submit = this.submit.bind(this);
-    this.getArticles = this.getArticles.bind(this);
     this.state = {
       articles:[]
     }
@@ -21,22 +21,15 @@ class App extends Component {
   submit(article){
     if(article){
       let key = this.dao.newKey();
-      let updated = this.dao.update( key, article );
-      return updated;
+      this.dao.update( key, article );
+      this.forceUpdate();
     }
   }
   isAnonymous(){
     return true;
   }
-  getArticles(){
-    let lis = [];
-    for(let i=0;i<this.state.articles.length;i++){
-      lis.push(<li key={this.state.articles[i].key}>{this.state.articles[i].content}</li>);
-    }
-    return lis;
-  }
   componentWillMount() {
-    this.dao.list(25).then((articles)=>{
+    this.dao.list(25,(articles)=>{
       var items = [];
       articles.forEach(function(article){
         var item = article.val();
@@ -60,9 +53,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
         </div>
         <Editor submit={this.submit} isAnonymous={this.isAnonymous}/>
-        <ul>
-        {this.getArticles()}
-        </ul>
+        <CardList articles={this.state.articles}/>
       </div>
     );
   }
