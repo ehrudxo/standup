@@ -12,7 +12,7 @@ export default function getArticle(
   return {
     user : user,
     content : content,
-    urls:[{
+    cardInfo:{
       url : url,
       title:title,
       description : description,
@@ -20,6 +20,6 @@ export default function getArticle(
       thumbnail_width : thumbnail_width,
       thumbnail_height :thumbnail_height,
       provider_name : provider_name
-    }]
+    }
   }
 }
