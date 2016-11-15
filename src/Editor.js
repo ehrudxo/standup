@@ -20,7 +20,7 @@ class Editor extends Component {
       cardInfo : undefined
     };
   }
-  getForcedState(embedlyUrl,content,cardInfo){
+  getForcedState(embedlyUrl,content){
     return new Promise(resolve=>{
       if(embedlyUrl){
         getEmbedly(embedlyUrl).then((response)=>{
