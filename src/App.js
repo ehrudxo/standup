@@ -5,7 +5,9 @@ import Editor from './Editor'
 import FirebaseDao from './FirebaseDao'
 import config from './config'
 import CardList from './CardList'
-
+import load from 'little-loader';
+import './external/firebase-ui/auth.js'
+import './external/firebase-ui/auth.css'
 /*
 * App Component
 */
