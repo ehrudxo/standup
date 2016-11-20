@@ -1,0 +1,8 @@
+.card_pop{
+  position:absolute;
+  border: 1px solid black;
+  top :115px;
+  right:20px;
+  padding: 10px;
+  background-color: white;
+}

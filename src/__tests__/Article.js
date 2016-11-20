@@ -12,6 +12,7 @@ export default function getArticle(
   return {
     user : user,
     content : content,
+    key : "015b",
     cardInfo:{
       url : url,
       title:title,

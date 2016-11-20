@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import Card from './Card'
 import './CardList.css'
+import {connect} from 'react-redux'
+import {loadArticles} from './actions/Article'
 
-export default class CardList extends Component {
+class CardList extends Component {
+  componentWillMount() {
+    const {dispatch} = this.props;
+    dispatch(loadArticles());
+  }
   createCard(item,index){
     return(<li className="list_row" key={item.key}>
               <pre className="common_margin grey_text">{item.content}</pre>
@@ -12,6 +18,11 @@ export default class CardList extends Component {
             </li>);
   }
   render() {
-    return <ul>{ this.props.articles.map(this.createCard) }</ul>;
+    if(this.props.articles && this.props.articles.length>0)
+      return <ul>{ this.props.articles.map(this.createCard) }</ul>;
+    else return <div key="015b"/>
   }
 }
+export default connect(
+  (state)=>({articles:state.default.articles})
+)(CardList);

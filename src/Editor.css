@@ -40,3 +40,15 @@
 .upload:disabled{
   background-color: #aaa;
 }
+.editor_header{
+  text-align: left;
+  background-color: white;
+  border-bottom: 1px solid #dddfe2;
+  width :100%;
+  height: 50px;
+}
+.today_title{
+  float: left;
+  margin-top: 17px;
+  padding-left: 10px;
+}
