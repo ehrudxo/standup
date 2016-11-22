@@ -80,6 +80,7 @@ favicon은 public folder밑에 파일을 대체만 해 주면 됩니다.
 ![day2_001](./doc_img/serverless_day2_01.jpg)
 
 파비콘도 정상이네요
+
 ![day2_002](./doc_img/serverless_day2_02.jpg)
 
 
