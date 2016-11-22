@@ -3,7 +3,9 @@
 Day1에서 Hello World 와도 같은 프로그램을 빌드까지 했다고 하면 Day2에서는 실제 페이지를 만들기 위한 기본 작업들로 시작해서 User Story2번의 기초 작업을 해 보도록 하겠습니다.
 
 일단 처음 만들어진 폴더 구조는 다음과 같습니다.
+
 ![serveless_folder_day2.jpg](./doc_img/serveless_folder_day2.jpg)
+
 이후 진행에 폴더를 찾는데 참조하시기 바랍니다.
 
 ## 로고, 파비콘(favicon), 헤더
@@ -14,8 +16,12 @@ Day1에서 Hello World 와도 같은 프로그램을 빌드까지 했다고 하�
 
 ### 로고
 개발자에게 디자인은 또 다른 어려움일거라 생각합니다.
-그래서 [쿨텍스트](http://ko.cooltext.com/) 같은 텍스트를 로고로 변환해 볼까 합니다.
+그래서
+[쿨텍스트](http://ko.cooltext.com/)
+같은 텍스트를 로고로 변환해 볼까 합니다.
+
 Stand Up으로 주고 헤더 색깔을 녹색( #02B875 )으로 지정할 예정이기 때문에 비슷하게 맞춰서 다운 받아 둡니다.
+
 ![stand_up_logo](./doc_img/stand_up_logo.png)
 
 ### favicon
