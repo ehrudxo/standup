@@ -39,7 +39,7 @@ $rm README.md && mv README.old.md README.md
 $git branch day1 && git checkout day1 && ls -al
 ```
 
-![그림2-1](/img/ls_al.png)
+![그림2-1](./doc_img/ls_al.png)
 
 와 같은 결과가 나옵니다.
 
@@ -51,7 +51,7 @@ $npm start
 를 통해 프로젝트를 실행해 볼 수 있고 아래와 같은 화면을 볼 수 있습니다.
 한 단계 산은 넘었군요.
 
-![그림2-2](/img/npm_start.png)
+![그림2-2](./doc_img/npm_start.png)
 
 ## gh-pages
 
@@ -200,7 +200,7 @@ $npm run build
 ```
 아마 build 폴더를 만들면서 아래와 같은 화면을 보여줄 것입니다.
 
-![그림2-3](npmrunbuild.png)
+![그림2-3](./doc_img/npmrunbuild.png)
 
 build 폴더 아래에는 static 한 파일들과 함께 배포용 파일들이 셋팅되어 있습니다.
 
@@ -210,6 +210,6 @@ build 폴더 아래에는 static 한 파일들과 함께 배포용 파일들이 
  $npm run deploy
 ```
 명령어를 입력하면 그림과 같이 내가 만든 페이지가 깃헙 호스팅 페이지에 배포 되었습니다!
-![그림2-3](npmrundeploy.png)
+![그림2-3](./doc_img/npmrundeploy.png)
 놀랍죠.
 다음 번엔 User Story2 번을 3번에 나눠서 만들어 보도록 하겠습니다.
