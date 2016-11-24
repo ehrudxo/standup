@@ -5,6 +5,6 @@ import Article from './Article';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  let cardInfo = Object.assign({},(new Article()).urls[0]);
+  let cardInfo = Object.assign({},(new Article()).cardInfo);
   ReactDOM.render(<Card cardInfo={cardInfo}/>, div);
 });
