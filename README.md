@@ -19,7 +19,6 @@ $git checkout day4
 사이트 링크가 편집기에 작성이 되면 어떻게 보여질 것인지에 대한 정의가 이번에는 내려져야 할 것입니다.
 
 ![Serverless_firebase16](./doc_img/Serverless_firebase16.jpg)
-
 [그림1]
 
 그림1에서 보여지는 것과 같이 썸네일 이미지는 그 이미지의 url과 width와 height가 있어야 제대로 화면에 보여질 수 있을 것이고, 제목(title)과 설명(description) 그리고 사이트의 링크가 포함되어져 있어야 할 것입니다.
@@ -177,7 +176,7 @@ class App extends Component {
 ```
 이렇게 확인해 보면 다음과 같은 화면을 확인할 수 있습니다.
 
-![그림2](./doc_img/Serverless_firebase17.jpg)
+![그림2](./doc_img/Serverless_firebase16.jpg)
 
 하지만 일단 Card를 확인했으면 App.js 파일은 되돌리고, Article.js파일은 __tests__ 파일 폴더 아래
 로 내립니다.
@@ -244,7 +243,6 @@ http://www.youtube.com/oembed?url=http%3A//youtube.com/watch%3Fv%3DM3r2XDceM6A&f
 우리는 여기에서 우리가 Card를 만들 때 드는 정보를 얻어낼 것입니다.
 
 ![Serverless_firebase18](./doc_img/Serverless_firebase18.jpg)
-
 [그림 3]
 
 이 API를 얻는 다는 것은 API key를 우선 얻는다는 것이겠죠?
@@ -254,7 +252,6 @@ http://www.youtube.com/oembed?url=http%3A//youtube.com/watch%3Fv%3DM3r2XDceM6A&f
 
 가입을 하고 나면 처음은 프로젝트를 만들게 됩니다. standup 으로 만들어 보겠습니다.
 ![Serverless_firebase20](./doc_img/Serverless_firebase20.jpg)
-
 [그림4]
 
 그리고 팀 멤버를 초대하는 화면은 skip하셔도 됩니다. 이후 email 확인을 하고 나면 서비스를 이용할 수 있는데
@@ -264,6 +261,7 @@ Manage API key를 통해 발급받을 수 있습니다.
 회원 가입을 하고 로그인 하면 다음과 같이 카드나 iframe 소스를 얻는 실습을 해볼 수도 있습니다.
 
 ![Serverless_firebase19](./doc_img/Serverless_firebase19.png)
+[그림5]
 
 하지만 우리에게 필요한 것은 API로 JSON을 얻는 것이겠죠?
 
@@ -322,6 +320,8 @@ https://github.com/mzabriskie/axios
 
 ![Serverless_firebase20](./doc_img/Serverless_firebase20.jpg)
 
+[그림6]
+
 이 axios.js 의 강점은 뭐니뭐니 해도 Promise 기반의 HTTP 클라이언트라는데에 있습니다.
 
 기존의 모듈들은 주로 jquery가 해 주던 내용에서 HTTP 클라이언트 부분만 유사하게 (혹은 호환되게) 코드를
@@ -375,9 +375,8 @@ axios.get('/user', {
   ```
 > 의 모습을 띄게 됩니다.
 > 하지만 이런 콜백을 여러번 호출하게 되면
+> ![callback_hell](./doc_img/callback_hell.jpg)
 > 이른바 콜백 지옥에 떨어지게 됩니다. 가독성도 무척이나 떨어지게 되는 셈입니다.
-![callback_hell](./doc_img/callback_hell.jpg)
->
 > 이런 일들에서 구원코자 여러 방법들이 동원 되었지만 ES2015에서 정립된 표준은 Promises 입니다.
 > Promise는 위의 함수가 아래와 같이 변화하는 것입니다.
 ```JavaScript
@@ -387,9 +386,283 @@ axios.get('/user', {
             .catch((error)=>{console.log(error)})
   }
 ```
-> 성공을 했을 때 then으로 빠지고, 실패를 하면 catch에 들어가는 패턴.
-> 어디선가 보지 않았나요? 내 우리는 이미 Firebase DAO를 작성할 때에 이 패턴을 확인했습니다.
 
+성공을 했을 때 then으로 빠지고, 실패를 하면 catch에 들어가는 패턴.
+어디선가 보지 않았나요? 내 우리는 이미 Firebase DAO를 작성할 때에 이 패턴을 확인했습니다.
 
+이 Axios를 이용해서 EmbedlyDao를 만들어 보겠습니다.
+먼저 Test코드를 작성해 볼까요?
 
-.
+```JavaScript
+it('Get Embedly Info From Embedly', () => {
+  getEmbedly("http://www.naver.com").then((response)=>{
+    expect(response.data.url).toEqual("http://www.naver.com");
+  }).catch((error)=>{
+    console.log(error);
+  });
+});
+```
+getEmbedly 하고 url을 넘기면 resposnse 가 오는데 response 로 오는 값의 data 에서 거꾸로 url
+을 가져오면 똑같아 지면 되도록 테스트 코드를 짭니다.
+
+이후 실제 코드는 아래와 같이 만들고
+
+```JavaScript
+import request from 'axios';
+import {embedlyKey} from './config';
+export default function getEmbedly(url){
+  return request.get('https://api.embedly.com/1/oembed',{
+    params: {
+      url : url,
+      key : embedlyKey
+    }
+  });
+}
+```
+
+embedlyKey는 config 파일에 다음과 같이 추가해 줍니다.
+
+```JavaScript
+export var embedlyKey = process.env.REACT_APP_EMBEDLY_KEY;
+```
+
+이후 test 를 통해 확인해 보면 값이 true로 떨어지는 것을 확인할 수 있습니다.
+
+## 구슬이 서말이니까 꿰어만 봅시다
+이제 Card를 만들 수 있는 준비는 끝났고, 지난 글에서 Firebase에서 글의 목록을 가져오는 걸 했으니
+지금은 Editor와 리스트를 다시 살펴 봐야겠죠?
+
+일단 편집기(Editor.js)를 어떻게 바꿔야 할까요?
+
+Article.js는 더 이상 import 할 필요는 없습니다. 편집기에 복사 붙여 넣기를 했을때, 그리고 어떤 텍스
+트를 쳤을 때 detect URL을 해서 setting 해 주는 시점에  Embedly 서비스를 갖다 와야 합니다.
+
+그래서 이런 일들을 한꺼번에 하는 getForcedState라는 함수를 다음과 같이 작성해 보도록 하겠습니다.
+```JavaScript
+getForcedState(embedlyUrl,content){
+  return new Promise(resolve=>{
+    if(embedlyUrl){
+      getEmbedly(embedlyUrl).then((response)=>{
+        let cardInfo = Object.assign({},response.data);
+        resolve({
+          embedlyUrl : embedlyUrl,
+          content : content,
+          cardInfo : cardInfo
+        });
+      }).catch((error)=>{
+        resolve({
+          embedlyUrl : undefined,
+          content : undefined,
+          cardInfo : undefined
+        });
+      });
+    }else{
+      resolve({
+        content : content
+      });
+    }
+  })
+}
+```
+getEmbedly는 Promise 패턴을 통해 호출을 해서 데이터가 있을때 없을 때는 구분해서 상태(state) 전이를
+담당하게 만듭니다.(물론 onPaste와 editorChange가 getForcedState를 호출하도록 변경하는 것도 필요
+합니다. )
+
+이렇게 한 뒤에 JSX문법이 들어가는 쪽의 getCard 함수를 Card 컴포넌트로 바꿔주고 상태 전이를 감지할 수
+있도록 리액트 속성(props) 값을 연결해 줘야 하겠죠.
+
+편집기 (Editor.js) 전체 소스는 다음과 같습니다.
+```JavaScript
+import React, { Component } from 'react'
+import './Editor.css'
+import Profile from './Profile'
+import Card from './Card'
+import getEmbedly from './EmbedlyDao'
+
+class Editor extends Component {
+  constructor(props){
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.onPaste = this.onPaste.bind(this);
+    this.editorChange = this.editorChange.bind(this);
+    this.hasValue = this.hasValue.bind(this);
+    this.detectURL = this.detectURL.bind(this);
+    this.getArticle = this.getArticle.bind(this);
+    this.getForcedState  = this.getForcedState.bind(this);
+    //state 에 embedlyUrl, content, cardInfo를 가지도록 변경합니다
+    this.state={
+      embedlyUrl : undefined,
+      content : undefined,
+      cardInfo : undefined
+    };
+  }
+  //embedly 서비스를 통해 카드에 들어갈 값을 가져 옵니다.
+  getForcedState(embedlyUrl,content){
+    return new Promise(resolve=>{
+      if(embedlyUrl){
+        getEmbedly(embedlyUrl).then((response)=>{
+          let cardInfo = Object.assign({},response.data);
+          resolve({
+            embedlyUrl : embedlyUrl,
+            content : content,
+            cardInfo : cardInfo
+          });
+        }).catch((error)=>{
+          resolve({
+            embedlyUrl : undefined,
+            content : undefined,
+            cardInfo : undefined
+          });
+        });
+      }else{
+        resolve({
+          content : content
+        });
+      }
+    })
+  }
+  //getForcedState를 이용하도록 변경
+  onPaste(event){
+    event.clipboardData.items[0].getAsString(text=>{
+      let checkText = this.detectURL(text);
+      if(checkText){
+        this.getForcedState(checkText).then((obj)=>{
+          this.setState(obj);
+        });
+      }
+    })
+  }
+  //getForcedState를 이용하도록 변경
+  editorChange(event){
+    let checkText = this.detectURL(event.currentTarget.textContent);
+    if(!this.state.embedlyUrl&&
+        (event.keyCode===32||event.keyCode===13)&&
+        checkText){
+      this.getForcedState(checkText,event.currentTarget.textContent)
+          .then((obj)=>{
+            this.setState(obj);
+          });
+    }else{
+      this.getForcedState(undefined,event.currentTarget.textContent)
+          .then((obj)=>{
+            this.setState(obj);
+          });
+    }
+  }
+  //아직 User를 가져 오는 부분은 바뀌지 않았음으로..
+  getArticle(){
+    let article = {};
+    article.user = "Genji";
+    article.content = this.state.content;
+    if(this.state.embedlyUrl){
+      article.cardInfo = this.state.cardInfo;
+    }
+    return article;
+  }
+
+  hasValue(value){
+    if((value && (typeof value) === "string"))
+      return (!value)?false:(value.trim()===""?false:true);
+    else return false;
+  }
+  handleSubmit(e){
+    e.preventDefault();
+    this.props.submit(this.getArticle());
+    this.setState({
+      embedlyUrl : undefined,
+      content : undefined,
+      cardInfo : undefined
+    });
+  }
+  detectURL(text){
+    var urls = text.match(/(https?:\/\/[^\s]+)/g)||text.match(/(www.[^\s]+)/g);
+    if(urls && urls.length>0) return urls[0];
+    else return undefined;
+  }
+  //<Card cardInfo={this.state.cardInfo}/>를 통해 값을 셋팅
+  render() {
+    return (
+      <div className="wrapEditor">
+        <Profile isAnonymous={this.props.isAnonymous}/>
+        <div className="textEditor">
+          <div className="innerEdit"
+            contentEditable="true"
+            placeholder="글쓰기..."
+            onPaste={this.onPaste}
+            onKeyUp={this.editorChange}
+            dangerouslySetInnerHTML={{__html: this.state.content}}></div>
+            <Card cardInfo={this.state.cardInfo}/>
+        </div>
+        <div className="actionBar">
+          <button className="upload"
+            disabled={!this.hasValue(this.state.content)}
+            onClick={this.handleSubmit}><span>스탠드업!</span></button>
+        </div>
+      </div>
+    );
+  }
+}
+export default Editor;
+
+```
+이렇게 까지 하고 한번 확인해 보도록 하겠습니다.
+
+![Serverless_embedly01](./doc_img/Serverless_embedly01.jpg)
+
+[그림7]
+
+편집기에서 카드는 훌륭하게 가지고 오게 됩니다. 이제 저장을 눌러 한번 데이터를 확인해 보면
+
+![Serverless_embedly02](./doc_img/Serverless_embedly02.jpg)
+[그림8]
+
+그림 8 처럼 데이타는 잘 들어갔습니다.
+
+이제 리스팅 함수를 만들어야겠죠?
+
+App.js  파일로 getArticles를 통해 ul, li 로만 나열했던 부분은 과감하게 삭제를 하시고 CardList
+컴포넌트를 만들어 보겠습니다.
+
+먼저 App.js 파일의
+
+```JavaScript
+<ul>
+  {this.getArticles()}
+</ul>
+```
+부분을
+```JavaScript
+<CardList articles={this.state.articles}/>
+```
+로 변경하겠습니다. 물론 CardList 컨포넌트가 지금은 없으니 바로 에러가 뜨는 것이 정상입니다.
+
+```JavaScript
+import React, { Component } from 'react';
+import Card from './Card'
+import './CardList.css'
+
+export default class CardList extends Component {
+  createCard(item,index){
+    return(<li className="list_row" key={item.key}>
+              <pre className="common_margin grey_text">{item.content}</pre>
+              {
+                (item.cardInfo)?<Card cardInfo={item.cardInfo}/>:""
+              }
+            </li>);
+  }
+  render() {
+    return <ul>{ this.props.articles.map(this.createCard) }</ul>;
+  }
+}
+```
+li로 넘어가는 거는 똑같은데 루프를 돌면서 Card 컴포넌트를 대입하는 형태로 변경이 됩니다.
+
+![Serverless_embedly03](./doc_img/Serverless_embedly03.jpg)
+
+[그림9]
+
+그림9 같은 훌륭한 결과를 보여줍니다.
+
+이제 거의 다 한 거 같은데 뭔가 맘에 들지 않는 부분이 보입니다. 어떤 부분인가요? 네 그렇습니다. 로그인
+을 할 수 있으면 좋을 거 같습니다. 다음번에는 로그인, 사용자만의 데이타 보기등을 만들기 위해 라우터와
+redux를 적용하는 작업을 해 보도록 하겠습니다.
