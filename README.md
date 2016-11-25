@@ -23,7 +23,7 @@
 "로그인을 하는데 구글 ID로 해야한다" 라는 미션이 우리에게 주어졌습니다. 일단 사용자 스토리의 뒷쪽은 무시
 하고 로그인에 집중해 보도록 하겠습니다.
 
-<img src ="../img/Serverless_auth01.jpg" width=640>
+<img src ="./doc_img/Serverless_auth01.jpg" width=640>
 [그림1]
 
 그림 1과 같이 로그인을 하고 나면 프로필 페이지가 바뀌는 역할을 만들어 보도록 하겠습니다.
@@ -174,7 +174,7 @@ export default connect(mapStateToProps)(Login);
 
 그렇게 하고 나면 그림 2와 같은 로그인 화면을 볼 수 있습니다.
 
-<img src ="../img/Serverless_auth02.jpg">
+<img src ="./doc_img/Serverless_auth02.jpg">
 
 단, 그동안 사용했던 Firebase 참조는 주석처리를 찾아가서 해주시는 수고는 필요합니다.
 
