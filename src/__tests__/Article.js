@@ -24,3 +24,6 @@ export default function getArticle(
     }
   }
 }
+it('just leave it void', () => {
+
+});

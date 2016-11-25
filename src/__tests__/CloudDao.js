@@ -11,19 +11,19 @@ it('Object assign', function(){
   var article2 = Object.assign({},article1);
   article2.user = "Genji";
   article2.content = "다음";
-  article2.urls[0].url = "http://www.daum.net";
+  article2.cardInfo.url = "http://www.daum.net";
   //article1의 값이 잘 전달되었는지 확인.
-  expect(article1.urls[0].imgWidth).toEqual(article2.urls[0].imgWidth);
+  expect(article1.cardInfo.imgWidth).toEqual(article2.cardInfo.imgWidth);
 })
-it('list article', ()=>{
-  dao.list(25,(articles)=>{
-    articles.forEach((article)=>{
-      keys.push(article.key);
-      var article_v = article.val();
-      expect(article_v.user).toEqual("Genji");
-    })
-  });
-})
+// it('list article', ()=>{
+//   dao.list(25,(articles)=>{
+//     articles.forEach((article)=>{
+//       keys.push(article.key);
+//       var article_v = article.val();
+//       expect(article_v.user).toEqual("Genji");
+//     })
+//   });
+// })
 var key;
 it('upload article and edit',async ()=>{
   key = dao.newKey();
