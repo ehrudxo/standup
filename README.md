@@ -29,22 +29,28 @@ Day 0 이외에는 각 브랜치에 진행사항에 대한 설명이 있습니�
 
 * [Day 0. Git 설정 & README 작성](https://techstory.shma.so/%EC%84%9C%EB%B2%84%EB%A6%AC%EC%8A%A4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EC%86%8C%EC%85%9C%EB%AF%B8%EB%94%94%EC%96%B4-%EA%B0%9C%EB%B0%9C%EA%B8%B0-0%ED%8E%B8-63084e103f77#.h1ogt1t7c)
 * Day 1. user story 1 - create-react-app
-https://github.com/ehrudxo/standup/tree/day1
+
+  https://github.com/ehrudxo/standup/tree/day1
 
 * Day 2. user story 2 - logo, favicon, editor
-https://github.com/ehrudxo/standup/tree/day2
+
+  https://github.com/ehrudxo/standup/tree/day2
 
 * Day 3. user story 2 - firebase, jest setting
-https://github.com/ehrudxo/standup/tree/day3
+
+  https://github.com/ehrudxo/standup/tree/day3
 
 * Day 4. user story 2 - firebase dao
-https://github.com/ehrudxo/standup/tree/day4
+
+  https://github.com/ehrudxo/standup/tree/day4
 
 * Day 5. user story 3 - card, list, embed.ly, axios
-https://github.com/ehrudxo/standup/tree/day5
+
+  https://github.com/ehrudxo/standup/tree/day5
 
 * Day 6. user story 4 - authentication, redux & router
-https://github.com/ehrudxo/standup/tree/day6
+
+  https://github.com/ehrudxo/standup/tree/day6
 
 * Day 7. user story 4 - Group(작성중)
 
