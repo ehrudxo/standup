@@ -13,6 +13,7 @@ class PopCard extends Component{
     if(this.props.isPop){
       return(
         <div className="card_pop">
+          <div className="card_pop_arrow"/>
           <div>
           <a href="#" onClick={()=>dispatch(userArticles())}>내 글만 보기</a>
           </div>

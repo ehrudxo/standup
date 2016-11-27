@@ -9,7 +9,7 @@ class Profile extends Component{
     super(props);
     this.state={
       user : undefined,
-      isPop:false
+      isPop: false
     }
   }
   componentWillMount(){
@@ -22,8 +22,7 @@ class Profile extends Component{
     });
   }
   popProfile(){
-    let isPop = !this.state.isPop;
-    this.setState({isPop:isPop})
+    this.setState({isPop:!this.state.isPop})
   }
   render(){
     let user = this.state.user;
