@@ -1,7 +1,7 @@
 /*global firebaseui,firebase*/
 import {USER,GROUP} from '../constants'
 
-export default function update(state,action){
+export default function getArticles(state,action){
   if(action.type === USER){
     let articles_of_mine = [];
     let cUser = firebase.auth().currentUser;
