@@ -1,9 +1,10 @@
-/*global firebaseui,firebase*/
 import React, { Component } from 'react'
+import firebase from 'firebase';
 import './Editor.css'
-import Profile from './Profile'
 import Card from './Card'
 import getEmbedly from './EmbedlyDao'
+import {updateArticle} from './actions/Article'
+import { connect } from 'react-redux'
 
 class Editor extends Component {
   constructor(props){
@@ -92,7 +93,12 @@ class Editor extends Component {
   }
   handleSubmit(e){
     e.preventDefault();
-    this.props.submit(this.getArticle());
+    let article = this.getArticle();
+    if(article){
+      const {dispatch} = this.props;
+      dispatch(updateArticle(article));
+      this.forceUpdate();
+    }
     this.setState({
       embedlyUrl : undefined,
       content : undefined,
@@ -107,12 +113,6 @@ class Editor extends Component {
   render() {
     return (
       <div className="wrapEditor">
-        <div className="editor_header">
-          <div className="today_title">
-            무엇을 공유할까요?
-          </div>
-          <Profile/>
-        </div>
         <div className="textEditor">
           <div className="innerEdit"
             contentEditable="true"
@@ -131,4 +131,5 @@ class Editor extends Component {
     );
   }
 }
-export default Editor;
+export default connect()(Editor);
+

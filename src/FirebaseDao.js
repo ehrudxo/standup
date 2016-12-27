@@ -1,4 +1,6 @@
-/*global firebaseui,firebase*/
+import firebase from 'firebase';
+import firebaseui from 'firebaseui';
+
 /*
 *  initializeFirebaseApp
 */

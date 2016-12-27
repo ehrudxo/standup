@@ -1,5 +1,5 @@
-/*global firebaseui,firebase*/
 import React,{Component} from 'react'
+import firebase from 'firebase'
 import FirebaseDao from './FirebaseDao'
 import config from './config'
 import { connect } from 'react-redux'

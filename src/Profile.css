@@ -1,16 +1,20 @@
 .profile_img_wrap{
-  text-align: right;
+  text-align: left;
   border-radius: 50%;
   display: inline;
-  float: right;
+  float:left;
 }
 .profile_img{
   border-radius: 50%;
   height: 35px;
-  padding: 5px;
+  padding: 10px;
+  margin-left: 10px;
 }
 .profile_name{
   padding-right: 10px;
   float: right;
   margin-top: 17px;
+}
+.profile_name a{
+  color:#FFFFFF;
 }

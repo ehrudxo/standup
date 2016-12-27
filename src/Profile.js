@@ -1,5 +1,5 @@
-/*global firebase*/
 import React ,{Component} from 'react';
+import firebase from 'firebase';
 import './Profile.css';
 import { Link } from 'react-router'
 import PopCard from './PopCard'
@@ -21,7 +21,8 @@ class Profile extends Component{
       }
     });
   }
-  popProfile(){
+  popProfile(e){
+    console.log(e);
     this.setState({isPop:!this.state.isPop})
   }
   render(){
@@ -29,11 +30,9 @@ class Profile extends Component{
     if(user){
       return(
           <span>
-            <div className="profile_name">
-              <a href="#" onClick={()=>this.popProfile()}>{user.displayName}</a>
-            </div>
+
             <div className="profile_img_wrap">
-              <img src={user.photoURL} alt="profiles" className="profile_img"/>
+              <a href="#" onClick={(e)=>this.popProfile(e)}><img src={user.photoURL} alt="profiles" className="profile_img"/></a>
             </div>
             <PopCard isPop={this.state.isPop}/>
           </span>

@@ -3,3 +3,18 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+.float-right{
+  position: relative;
+  float: right;
+  padding-right: 5px;
+}
+.padding-top{
+ padding-top: 5px;
+}
+.green{
+  color : #02B875;
+}
+
+.bg_green{
+  color : #02B875;
+}

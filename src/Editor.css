@@ -14,7 +14,7 @@
 
 .textEditor{
   width:100%;
-  min-height: 100px;
+  min-height: 75px;
   background-color: white;
   border-bottom: 1px solid #dddfe2;
 }
@@ -22,23 +22,10 @@
   text-align: left;
   color: #1d2129;
   padding:20px;
-  min-height: 90px;
+  min-height: 65px;
 }
 .actionBar{
   min-height: 40px;
-}
-.upload{
-  width:100px;
-  height: 30px;
-  margin: 5px;
-  float:right;
-  color: white;
-  background-color: #02B875;
-  border-radius: 3px 3px 3px 3px;
-  border: 0px;
-}
-.upload:disabled{
-  background-color: #aaa;
 }
 .editor_header{
   text-align: left;
@@ -51,4 +38,7 @@
   float: left;
   margin-top: 17px;
   padding-left: 10px;
+}
+.upload{
+  float:right;
 }

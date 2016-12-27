@@ -1,5 +1,5 @@
-/*global firebaseui,firebase*/
 import {USER,GROUP} from '../constants'
+import firebase from 'firebase';
 
 export default function getArticles(state,action){
   if(action.type === USER){

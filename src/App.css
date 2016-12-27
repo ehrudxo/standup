@@ -11,6 +11,9 @@
   height: 50px;
   padding: 5px;
   color: white;
+  background-position: center;
+  background-size: 150px;
+  background-repeat: no-repeat;
 }
 
 .App-intro {
@@ -20,4 +23,20 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+a {
+  text-decoration: none;
+  color : #333;
+}
+button{
+  width:100px;
+  height: 30px;
+  margin: 5px;
+  color: white;
+  background-color: #02B875;
+  border-radius: 3px 3px 3px 3px;
+  border: 0px;
+}
+.upload:disabled{
+  background-color: #aaa;
 }
