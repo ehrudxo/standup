@@ -6,7 +6,12 @@ import Article from './Article';
 var article1 = Article();
 var dao = new FirebaseDao(config);
 var keys=[];
-
+let user1 = {
+  uuid :"uuid",
+  email : "keen2@exam.com",
+  displayName : "keen2",
+  photoURL : "http://멀리.com"
+}
 it('Object assign', function(){
   var article2 = Object.assign({},article1);
   article2.user = "Genji";
@@ -15,6 +20,22 @@ it('Object assign', function(){
   //article1의 값이 잘 전달되었는지 확인.
   expect(article1.cardInfo.imgWidth).toEqual(article2.cardInfo.imgWidth);
 })
+it('list user from fbase',function(){
+  return dao.getUserKeyFromEmail(user1.email).then((user)=>{
+    console.log(user);
+    expect(user.email).toEqual("keen@exam.com");
+  });
+});
+
+it('add user if user does not exist',()=>{
+  return dao.getUserKeyFromEmail(user1.email).catch(()=>{
+    console.log("add user");
+    dao.addUser(user1);
+  });
+});
+// it('add user forcefully',()=>{
+//     return dao.addUser(user1);
+// });
 // it('list article', ()=>{
 //   dao.list(25,(articles)=>{
 //     articles.forEach((article)=>{
@@ -24,19 +45,20 @@ it('Object assign', function(){
 //     })
 //   });
 // })
-var key;
-it('upload article and edit',async ()=>{
-  key = dao.newKey();
-  const promise1 = await dao.update( key, article1 );
-  return promise1;
-});
-it('find and delete',async ()=>{
-  const article = await dao.getArticle(key);
-  expect(article.key).toEqual(key);
-  if(article.key===key){
-    dao.remove(key);
-  }
-});
+// var key;
+// it('upload article and edit',async ()=>{
+//   key = dao.newKey();
+//   const promise1 = await dao.update( key, article1 );
+//   return promise1;
+// });
+// it('find and delete',async ()=>{
+//   const article = await dao.getArticle(key);
+//   expect(article.key).toEqual(key);
+//   if(article.key===key){
+//     dao.remove(key);
+//   }
+// });
+
 /* 동기화 문제 때문인지 제대로 동작하지 않는다.
 it('remove all ', function(){
   for(let i=0;i<keys.length;i++){

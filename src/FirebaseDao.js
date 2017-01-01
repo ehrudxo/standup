@@ -13,10 +13,50 @@ export default class FirebaseDao {
       this.firebaseApp = firebase.initializeApp(config);
     }
   }
+  getCurrentUser(){
+    return firebase.auth().currentUser;
+  }
   getFirebaseApp(){
     return this.firebaseApp;
   }
+  addUser(user){
+    let update ={};
+    let key = firebase.database().ref().child('users').push().key;
+    update['/users/'+key] = user;
+    return firebase.database().ref().update(update);
 
+  }
+  getUserKeyFromEmail( email ){
+    return new Promise((resolve,reject)=>{
+      firebase.database().ref('/users').on('value',(snapshot)=>{
+        let users = snapshot.val();
+        let hasUser = false;
+        for(let key in users){
+          if(users[key].email === email) {
+            hasUser = true;
+            resolve( users[key] );
+          }
+        }
+        if(!hasUser)reject();
+      });
+    });
+
+  }
+  addGroupTx(postData){
+    //make group
+    //user group mapping(if user does not exists, then create user ) - tx
+
+  }
+  addGroup(postData){
+    var update ={};
+    let key = firebase.database().ref().child('groups').push().key;
+    update['/groups/'+ key] = postData;
+    firebase.database().ref().update(update);
+    return key;
+  }
+  addUserGroup(user,postData){
+    return firebase.database().ref().child('/users/'+user.key).child("groups").push(postData);
+  }
   insert(postData){
     return firebase.database().ref().child('posts').push(postData);
   }

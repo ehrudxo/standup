@@ -1,7 +1,23 @@
-.group_add{
-    position: absolute;
-    top:125px;
+.group-add{
+    position: relative;
+    top:-125px;
     background-color: white;
     height: 155px;
     left:5px;
+    color : #AAA;
+}
+.drop-file{
+    margin-top: 5px;
+    height:75px;
+    width:90%;
+    border: 2px dashed #AAA;
+    margin-left: 5%;
+}
+.group-add-title{
+    width: 80%;
+    height: 20px;
+    border: 1px dotted #AAA;
+    margin-left: 5%;
+    margin-top: -15px;
+    text-align: left;
 }
