@@ -4,6 +4,7 @@
 import {GROUP}  from '../constants'
 import FirebaseDAO from '../FirebaseDao'
 import config  from '../config'
+import {selectButton} from './Button'
 
 const dao = new FirebaseDAO(config);
 export function getArticle(articles,groupName,logoUrl){
@@ -34,9 +35,11 @@ export function getGroup(groupName, logoUrl){
 export function groupSelect(groupName){
   return (dispatch) => {
     dao.getGroup(groupName).once('value', (snapshot) => {
-      let logoUrl = snapshot.val().logoUrl;
-      console.log(logoUrl);
-      return dispatch(getGroup(groupName,logoUrl));
+      if(snapshot.val()) {
+        let logoUrl = snapshot.val().logoUrl;
+        dispatch(getGroup(groupName, logoUrl));
+        dispatch(selectButton());
+      }
     })
   }
 }

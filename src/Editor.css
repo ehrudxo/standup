@@ -23,6 +23,7 @@
   color: #1d2129;
   padding:20px;
   min-height: 65px;
+  white-space: pre-wrap;
 }
 .actionBar{
   min-height: 40px;

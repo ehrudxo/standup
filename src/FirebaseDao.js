@@ -12,8 +12,7 @@ function _getUserKeyFromEmail( email ){
       for(let key in users){
         if(users[key].email === email) {
           hasUser = true;
-          // console.log(key, users[key]);
-          resolve( Object.assign({key:key},users[key]) );
+          resolve( { key:key,...users[key]});
           break;
         }
       }
@@ -105,18 +104,23 @@ export default class FirebaseDao {
     return firebase.database().ref().child('posts').push(postData);
   }
   update(key,postData){
-    //get group key first
-    this.checkGroupExists(postData.groupName).then((group)=>{
-      let groupKey = group?group.key:undefined;
-      //get user mail seconds
-      let uid = this.currentUser.uid;
-      //then update
-      var updates = {};
-      postData.key = key;
-      updates['/group-posts/' + groupKey+ "/"+key] = postData;
-      updates['/user-posts/' + uid + "/"+key] = postData;
-      return firebase.database().ref().update(updates);
-    })
+    return new Promise((resolve, reject)=>{
+      this.checkGroupExists(postData.groupName).then((group)=>{
+        //get group key first
+        let groupKey = group?group.key:undefined;
+        //get user mail seconds
+        let uid = this.currentUser.uid;
+        //then update
+        var updates = {};
+        postData.key = key;
+        updates['/group-posts/' + groupKey+ "/"+key] = postData;
+        updates['/user-posts/' + uid + "/"+key] = postData;
+        let updateRes =  firebase.database().ref().update(updates);
+        resolve(updateRes);
+      }).catch((error)=>{
+        reject(error);
+      })
+    });
   }
   remove(key){
     return new Promise(resolve=>{
@@ -131,6 +135,20 @@ export default class FirebaseDao {
   newKey(){
     return firebase.database().ref().child('posts').push().key;
   }
+  listGroupArticle(group){
+    return new Promise((resolve,reject)=> {
+      this.getGroup(group).once('value',(snapshot) => {
+        let sn = snapshot.val();
+        if (sn && sn.key) {
+          firebase.database().ref('/group-posts/' + sn.key).on('value',(snapshot)=>{
+            resolve(snapshot.val());
+          });
+        }else{
+          reject(new Error('no group'));
+        }
+      })
+    });
+  }ç
   /**
   * Promise를 호출하게 되면 이벤트가 등록된 부분이 사라지게 된다.
   */
@@ -142,21 +160,6 @@ export default class FirebaseDao {
                 callback(articles);
               })
     // });
-  }
-  listGroupArticle(group){
-    return new Promise((resolve,reject)=> {
-      this.getGroup(group).once('value',(snapshot) => {
-        let sn = snapshot.val();
-        if (sn && sn.key) {
-          firebase.database().ref('/group-posts/' + sn.key).on('value',(snapshot)=>{
-            console.log(snapshot.val());
-            resolve(snapshot.val());
-          });
-        }else{
-          reject(new Error('no group'));
-        }
-      })
-    });
   }
   getArticle(key){
     return new Promise(resolve=>{

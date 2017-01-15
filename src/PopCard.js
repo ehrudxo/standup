@@ -10,7 +10,6 @@ class PopCard extends Component{
     this.logout = this.logout.bind(this);
   }
   logout(){
-    console.log("logout!");
     firebase.auth().signOut();
   }
   render(){

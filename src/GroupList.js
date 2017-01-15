@@ -24,7 +24,6 @@ class RenderGroupCardList extends  Component{
     };
   }
   componentWillMount(){
-    console.log(this.props);
     for(let title in this.props.groups){
       if(this.props.groups.hasOwnProperty(title))
         this.groupDOMs.push(
@@ -57,7 +56,7 @@ class GroupList extends Component{
   componentWillMount(){
     dao.groupList.on('value',(snapshot)=> {
       this.setState({
-        groups: Object.assign({}, snapshot.val()),
+        groups: {...snapshot.val()},
         isLoaded: true
       });
     });

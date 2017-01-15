@@ -4,12 +4,13 @@ import './Editor.css'
 import Card from './Card'
 import getEmbedly from './EmbedlyDao'
 import {updateArticle} from './actions/Article'
+import {groupSelect} from './actions/Group'
 import { connect } from 'react-redux'
 
 class Editor extends Component {
   constructor(props){
     super(props);
-    console.log(this.props);
+    // console.log(this.props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onPaste = this.onPaste.bind(this);
     this.editorChange = this.editorChange.bind(this);
@@ -27,7 +28,7 @@ class Editor extends Component {
     return new Promise(resolve=>{
       if(embedlyUrl){
         getEmbedly(embedlyUrl).then((response)=>{
-          let cardInfo = Object.assign({},response.data);
+          let cardInfo = {...response.data};
           resolve({
             embedlyUrl : embedlyUrl,
             content : content,
@@ -58,20 +59,17 @@ class Editor extends Component {
     })
   }
   editorChange(event){
-    let checkText = this.detectURL(event.currentTarget.textContent);
-    if(!this.state.embedlyUrl&&
-        (event.keyCode===32||event.keyCode===13)&&
-        checkText){
-      this.getForcedState(checkText,event.currentTarget.textContent)
-          .then((obj)=>{
-            this.setState(obj);
-          });
-    }else{
-      this.getForcedState(undefined,event.currentTarget.textContent)
-          .then((obj)=>{
-            this.setState(obj);
-          });
+    let embedlyUrl;
+    let isKeyCheck = event.keyCode===32||event.keyCode===13;
+    let editorText = event.currentTarget.textContent;
+    if(!this.state.embedlyUrl && isKeyCheck ){
+      embedlyUrl = this.detectURL(editorText);
     }
+    // editorText.replace(/\n/g,"<br />");
+    this.getForcedState(embedlyUrl,editorText).then((obj)=>{
+      // console.log(obj);
+      this.setState(obj);
+    });
   }
   getArticle(){
     let article = {};
@@ -96,8 +94,9 @@ class Editor extends Component {
     e.preventDefault();
     let article = this.getArticle();
     if(article){
-      const {dispatch} = this.props;
+      const {dispatch,groupName} = this.props;
       dispatch(updateArticle({...article,groupName:this.props.groupName}));
+      dispatch(groupSelect(groupName))
       this.forceUpdate();
     }
     this.setState({
@@ -120,7 +119,7 @@ class Editor extends Component {
             placeholder="글쓰기..."
             onPaste={this.onPaste}
             onKeyUp={this.editorChange}
-            dangerouslySetInnerHTML={{__html: this.state.content}}></div>
+            ></div>
             <Card cardInfo={this.state.cardInfo}/>
         </div>
         <div className="actionBar">

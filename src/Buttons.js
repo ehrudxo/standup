@@ -7,45 +7,15 @@ import './Buttons.css'
 import GroupList from './GroupList'
 import Editor from './Editor'
 import {connect} from 'react-redux'
+import {selectButton} from './actions/Button'
 
-const GREY = '#AAA';
-const PINK = '#FD478A';
-const WHITE = 'white';
-
-function _selectButtonStyle(button){
-  switch(button){
-    case 'groups':
-      return {
-        style_d: {color: GREY},
-        style_g: {color: PINK},
-        style_e: {color: GREY}
-      }
-    case 'edit' :
-      return {
-        style_d: {color: GREY},
-        style_g: {color: GREY},
-        style_e: {color: PINK}
-      }
-    default:
-      return {
-        style_d: {color: WHITE},
-        style_g: {color: GREY},
-        style_e: {color: GREY}
-      }
-  }
-};
-  
 class Buttons extends Component {
-  constructor(props){
-    super(props);
-    this.state = _selectButtonStyle('default');
-  }
   selectButton(args){
-    let s = Object.assign({selected:args},_selectButtonStyle(args));
-    this.setState(s);
+    const {dispatch} = this.props;
+    dispatch(selectButton(args));
   }
-  renderActionBar(){
-    switch (this.state.selected){
+  renderActionBar(selected){
+    switch (selected){
       case 'groups':
         return <GroupList/>
       case 'edit' :
@@ -55,18 +25,18 @@ class Buttons extends Component {
     }
   }
   render() {
-    const {logoUrl,groupName} = this.props;
+    const {logoUrl,groupName,selectedButton,defaultButtonStyle,groupButtonStyle,editButtonStyle} = this.props;
     return (
       <div>
 
       <div className="buttons">
         <Profile/>
-        <a onClick={()=>this.selectButton('edit')}><i className="fa fa-pencil-square fa-lg" style={this.state.style_e}></i></a>
-        <a onClick={()=>this.selectButton('groups')}><i className="fa fa-handshake-o fa-lg" style={this.state.style_g}></i></a>
-        <a onClick={()=>this.selectButton()}><i className="fa fa-window-minimize fa-lg" style={this.state.style_d}></i></a>
+        <a onClick={()=>this.selectButton('edit')}><i className="fa fa-pencil-square fa-lg" style={editButtonStyle}></i></a>
+        <a onClick={()=>this.selectButton('groups')}><i className="fa fa-handshake-o fa-lg" style={groupButtonStyle}></i></a>
+        <a onClick={()=>this.selectButton()}><i className="fa fa-window-minimize fa-lg" style={defaultButtonStyle}></i></a>
       </div>
-      {this.renderActionBar()}
-      {groupName && !this.state.selected&&
+      {this.renderActionBar(selectedButton)}
+      {groupName && !selectedButton&&
         <div style={{width:'100%',height:150,position:'relative'}}>
           <img src={logoUrl} alt={groupName} style={{width:'100%',height:150}}/>
           <div className="style_title" style={{width:"100%"}}>{groupName}</div>

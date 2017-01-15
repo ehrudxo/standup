@@ -10,7 +10,6 @@ import { connect } from 'react-redux'
 class GroupCard extends Component{
   changeGroup(groupName){
     const {dispatch} = this.props;
-    console.log(this.props);
     dispatch(groupSelect(groupName));
     browserHistory.push('/groups/'+groupName);
   }

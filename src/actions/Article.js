@@ -1,7 +1,9 @@
 import { ARTICLE,ALL } from '../constants'
 import FirebaseDao from '../FirebaseDao'
 import config from '../config'
+import {groupSelect} from './Group'
 const dao = new FirebaseDao(config);
+
 export function userArticles() {
   return {
     type: ARTICLE
@@ -31,7 +33,10 @@ export function loadArticles() {
 }
 
 export function updateArticle(postData){
-  return () => {
-    dao.update(dao.newKey(),postData);
+  return (dispatch) => {
+    dao.update(dao.newKey(),postData).then(()=>{
+      dispatch(groupSelect(postData.groupName));
+    });
+
   };
 }
