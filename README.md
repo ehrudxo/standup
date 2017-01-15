@@ -419,11 +419,11 @@ src/reducers 폴더를 만들고 Article.js 파일을 만듭니다.
 
 ```JavaScript
 /*global firebaseui,firebase*/
-import {USER,GROUP} from '../constants'
+import {ARTICLE,GROUP} from '../constants'
 //state 와 action을 매개변수(parameter) 로 받는다
 export default function getArticles(state,action){
   //액션의 유형(type) 에 따라 어떻게 state를 만들 것인지를 결정합니다.
-  if(action.type === USER){ // 사용자별 유형이 들어왔을 경우
+  if(action.type === ARTICLE){ // 사용자별 유형이 들어왔을 경우
     let articles_of_mine = [];
     let cUser = firebase.auth().currentUser;
     //state의 article에서 현재 사용자의 문서(Article)을 뽑아 낸다.
@@ -448,10 +448,10 @@ firebase 에 등록된 사용자를 기준으로 사용자가 등록한 문서�
 src/actions 폴더를 만들고 Article 파일을 만듭니다.
 
 ```JavaScript
-import { USER, GROUP,ALL } from '../constants'
+import { ARTICLE, GROUP,ALL } from '../constants'
 export function userArticles() {
   return {
-    type: USER
+    type: ARTICLE
   }
 }
 ```

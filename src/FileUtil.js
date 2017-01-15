@@ -3,7 +3,7 @@
  */
 import firebase from 'firebase'
 
-export default function imageUpload(files, size, callback){
+export default function fileupload(files,size, callback){
   if(size && files.length!==size){
     if(size===1)alert("file은 하나만 업로드 가능합니다");
     else alert("지정된 파일 갯수랑 같지 않습니다.")

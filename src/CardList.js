@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import Card from './Card'
 import './CardList.css'
 import {connect} from 'react-redux'
-import {loadArticles} from './actions/Article'
+import 'react-router-redux'
+import {groupSelect} from './actions/Group'
 
 class CardList extends Component {
-  componentWillMount() {
-    const {dispatch} = this.props;
-    dispatch(loadArticles());
+  componentWillMount(){
+    const {dispatch,groupName} = this.props;
+    dispatch(groupSelect(groupName));
   }
   createCard(item,index){
     return(<li className="list_row" key={item.key}>
@@ -18,11 +19,17 @@ class CardList extends Component {
             </li>);
   }
   render() {
-    if(this.props.articles && this.props.articles.length>0)
-      return <ul>{ this.props.articles.map(this.createCard) }</ul>;
-    else return <div key="015b"/>
+    const {articles} = this.props;
+    return(
+      <div>
+        {articles && articles.length > 0 &&
+          <ul>{ articles.map(this.createCard) }</ul>
+        }
+      </div>
+    );
   }
 }
-export default connect(
-  (state)=>({articles:state.default.articles})
-)(CardList);
+let mapStateToProps = (state, ownProps ) => {
+  return {...state.default,...ownProps}
+}
+export default connect(mapStateToProps)(CardList);

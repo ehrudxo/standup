@@ -9,6 +9,7 @@ import { connect } from 'react-redux'
 class Editor extends Component {
   constructor(props){
     super(props);
+    console.log(this.props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onPaste = this.onPaste.bind(this);
     this.editorChange = this.editorChange.bind(this);
@@ -96,7 +97,7 @@ class Editor extends Component {
     let article = this.getArticle();
     if(article){
       const {dispatch} = this.props;
-      dispatch(updateArticle(article));
+      dispatch(updateArticle({...article,groupName:this.props.groupName}));
       this.forceUpdate();
     }
     this.setState({
@@ -131,5 +132,9 @@ class Editor extends Component {
     );
   }
 }
-export default connect()(Editor);
+let mapStateToProps = (state, ownProps ) => {
+  return {groupName: state.default.groupName}
+}
+export default connect(mapStateToProps)(Editor);
+
 

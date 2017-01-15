@@ -1,26 +1,31 @@
 import React, { Component } from 'react';
-import logo from './img/stand_up_logo.png';
+import standardLogo from './img/stand_up_logo.png';
 import './App.css';
 import Buttons from './Buttons'
 import CardList from './CardList'
+
 /*
 * App Component
 */
 class App extends Component {
   render() {
-    var headerStyle ={
-      backgroundImage : 'url(' + logo+ ')'
+    let groupName = this.props.params.groupName;
+    let logo = standardLogo;
+    let headerClass = "app-header";
+    let headerStyle ={
+      backgroundImage : 'url(' +logo+ ')'
     }
-
     return (
-      <div className="App">
-          <div className="App-header" style={headerStyle}>
+      <div className="app">
+          <div className={headerClass} style={headerStyle}>
           </div>
-        <Buttons pathname={this.props.location.pathname}/>
+        <Buttons groupName={groupName}/>
         {this.props.children}
-        <CardList/>
+        <CardList groupName={groupName}/>
       </div>
     );
   }
 }
 export default App;
+
+

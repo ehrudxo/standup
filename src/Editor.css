@@ -2,7 +2,7 @@
 [contenteditable=true]:empty:before{
   content: attr(placeholder);
   color: #aaa;
-  display: block; /* For Firefox */
+  /*display: block; !* For Firefox *!*/
 }
 .wrapEditor{
   padding : 0px;

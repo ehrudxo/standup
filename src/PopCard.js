@@ -5,7 +5,12 @@ import {userArticles,loadArticles} from './actions/Article'
 import {connect} from 'react-redux';
 
 class PopCard extends Component{
+  constructor(props){
+    super(props);
+    this.logout = this.logout.bind(this);
+  }
   logout(){
+    console.log("logout!");
     firebase.auth().signOut();
   }
   render(){
@@ -22,7 +27,7 @@ class PopCard extends Component{
           <a href="#" onClick={()=>dispatch(loadArticles())}>전체 글 보기</a>
           </div>
           <div>
-            <a href="#" onClick={()=>this.logout()}>로그아웃</a>
+            <a href="#" onClick={this.logout}>로그아웃</a>
           </div>
         </div>);
     }else{

@@ -6,11 +6,15 @@ import './GroupList.css'
 import Slider from 'react-slick'
 import 'slick-carousel'
 import GroupCard from './GroupCard'
-import {Link} from 'react-router'
+import GroupAdd from './GroupAdd'
+import FirebaseDao from './FirebaseDao'
+import config from './config'
 
-class GroupList extends Component{
+const dao = new FirebaseDao(config);
+class RenderGroupCardList extends  Component{
   constructor(props){
     super(props);
+    this.groupDOMs = [];
     this.settings = {
       dots: true,
       infinite: true,
@@ -19,25 +23,57 @@ class GroupList extends Component{
       slidesToScroll: 1
     };
   }
+  componentWillMount(){
+    console.log(this.props);
+    for(let title in this.props.groups){
+      if(this.props.groups.hasOwnProperty(title))
+        this.groupDOMs.push(
+          <div key={title}>
+            <GroupCard imageUrl={this.props.groups[title]["logoUrl"]}
+                       title={title} />
+          </div>);
+    }
+  }
+  render(){
+    return (
+      <Slider {...this.settings}>
+        {this.groupDOMs}
+      </Slider>
+    );
+  }
+}
+class GroupList extends Component{
+  constructor(props){
+    super(props);
+    this.groups = undefined;
+    this.state={
+      isPop :false,
+      isLoaded :false
+    }
+  }
+  popGroupAdd(isPop){
+    this.setState({isPop:isPop});
+  }
+  componentWillMount(){
+    dao.groupList.on('value',(snapshot)=> {
+      this.setState({
+        groups: Object.assign({}, snapshot.val()),
+        isLoaded: true
+      });
+    });
+  }
   render(){
     return(
-      <div className="group_chooser">
-        <Slider {...this.settings}>
-          <div>
-            <GroupCard
-            imageUrl="https://code.vmware.com/wp-content/uploads/sites/13/2016/08/hackathon-graphic.png"
-            title="devpools"/>
-          </div>
-          <div><h3>2</h3></div>
-          <div><h3>3</h3></div>
-          <div><h3>4</h3></div>
-          <div><h3>5</h3></div>
-          <div><h3>6</h3></div>
-        </Slider>
-        <Link to="/group/add">
-          <button className="groupAddBtn"><i className="fa fa-plus-circle"> 새 그룹</i></button>
-        </Link>
-        {this.props.children}
+      <div className="group-chooser">
+        {this.state.isLoaded &&
+          <RenderGroupCardList groups={this.state.groups}/>
+        }
+        <button onClick={()=>this.popGroupAdd(true)} className="groupAddBtn">
+          <i className="fa fa-plus-circle"> 새 그룹</i>
+        </button>
+        {this.state.isPop&&
+          <GroupAdd popGroupAdd={(isPop)=>this.popGroupAdd(isPop)}/>
+        }
       </div>
     )
   }

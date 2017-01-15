@@ -1,12 +1,12 @@
-.App {
+.app {
   text-align: center;
 }
 
-.App-logo {
+.app-logo {
   height: 45px;
 }
 
-.App-header {
+.app-header {
   background-color: #02B875;
   height: 50px;
   padding: 5px;
@@ -14,6 +14,18 @@
   background-position: center;
   background-size: 150px;
   background-repeat: no-repeat;
+}
+.group-header{
+  background-color: #02B875;
+  height: 50px;
+  padding: 5px;
+  color: white;
+  background-position: left;
+  background-size: 43px;
+  background-repeat: no-repeat;
+  font-size: 36px;
+  vertical-align: text-bottom;
+  font-weight: bold;
 }
 
 .App-intro {
@@ -27,6 +39,10 @@
 a {
   text-decoration: none;
   color : #333;
+  cursor : auto;
+}
+a:hover {
+  text-decoration: underline;
 }
 button{
   width:100px;
@@ -34,9 +50,22 @@ button{
   margin: 5px;
   color: white;
   background-color: #02B875;
-  border-radius: 3px 3px 3px 3px;
+  /*border-radius: 3px 3px 3px 3px;*/
   border: 0px;
+}
+.button-reverse{
+  color: #02B875;
+  background-color: white;
+  border: 1px solid #02B875;
+  /*border-radius: 3px 3px 3px 3px;*/
 }
 .upload:disabled{
   background-color: #aaa;
+}
+.group-header{
+  background-image: url("");
+}
+.group-title{
+  margin-top: 3px;
+
 }

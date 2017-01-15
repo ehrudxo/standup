@@ -6,6 +6,8 @@ import Article from './Article';
 var article1 = Article();
 var dao = new FirebaseDao(config);
 var keys=[];
+var emailreg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
 let user1 = {
   uuid :"uuid",
   email : "keen2@exam.com",
@@ -20,22 +22,34 @@ it('Object assign', function(){
   //article1의 값이 잘 전달되었는지 확인.
   expect(article1.cardInfo.imgWidth).toEqual(article2.cardInfo.imgWidth);
 })
-it('list user from fbase',function(){
-  return dao.getUserKeyFromEmail(user1.email).then((user)=>{
-    console.log(user);
-    expect(user.email).toEqual("keen@exam.com");
-  });
-});
-
-it('add user if user does not exist',()=>{
-  return dao.getUserKeyFromEmail(user1.email).catch(()=>{
-    console.log("add user");
-    dao.addUser(user1);
-  });
-});
-// it('add user forcefully',()=>{
-//     return dao.addUser(user1);
+// describe('list and add user', ()=>{
+//   it('add user if user exists, add user if user does not exist',()=>{
+//     return dao.getUserKeyFromEmail(user1.email).then((key,user)=>{
+//       if(user && user.email)
+//         expect(user.email).stringMatching(emailreg);
+//     }).catch(()=>{
+//       dao.addUser(user1);
+//     });
+//   });
 // });
+describe('check group exists',()=>{
+  let group = {
+    name : '파괴왕',
+    owner : "keen@exam.com",
+    logoUrl : "https://www.facebook.com/photo.php?fbid=1042140589177284&set=gm.1685005005106300&type=3"
+  };
+  it('if group exists', ()=>{
+    dao.checkGroupExists(group.name).then(function(){
+      console.log("group exist");
+    });
+  });
+  it('if group does not exists',()=>{
+    dao.checkGroupExists(group.name).catch(function(){
+      dao.addGroup(user1,group);
+    });
+  })
+})
+
 // it('list article', ()=>{
 //   dao.list(25,(articles)=>{
 //     articles.forEach((article)=>{
