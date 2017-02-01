@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="173d434c-59dc-4f9d-a5eb-f8a98df0cae6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/doc_img/Serverless_group01-01.jpeg" afterPath="$PROJECT_DIR$/doc_img/Serverless_group01-01.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/doc_img/Serverless_group01-02.jpeg" afterPath="$PROJECT_DIR$/doc_img/Serverless_group01-02.jpg" />
     </list>
     <ignored path="standup.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -82,8 +83,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="210">
-                <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+              <first_editor relative-caret-position="270">
+                <caret line="29" column="15" lean-forward="false" selection-start-line="29" selection-start-column="15" selection-end-line="29" selection-end-column="15" />
                 <folding>
                   <marker date="1485915220000" expanded="true" signature="5966:7715" ph="{...}" />
                   <marker date="1485915220000" expanded="true" signature="6001:6102" ph="{...}" />
@@ -584,12 +585,12 @@
       <workItem from="1482913215757" duration="61392000" />
       <workItem from="1483941078007" duration="69539000" />
       <workItem from="1484647297634" duration="8571000" />
-      <workItem from="1485743412652" duration="9514000" />
+      <workItem from="1485743412652" duration="9629000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="187277000" />
+    <option name="totallyTimeSpent" value="187392000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -604,7 +605,7 @@
     <frame x="633" y="23" width="640" height="710" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37318256" sideWeight="0.7613169" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37318256" sideWeight="0.7613169" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32981133" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3273906" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1015,8 +1016,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="210">
-            <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <first_editor relative-caret-position="270">
+            <caret line="29" column="15" lean-forward="false" selection-start-line="29" selection-start-column="15" selection-end-line="29" selection-end-column="15" />
             <folding>
               <marker date="1485915220000" expanded="true" signature="5966:7715" ph="{...}" />
               <marker date="1485915220000" expanded="true" signature="6001:6102" ph="{...}" />
