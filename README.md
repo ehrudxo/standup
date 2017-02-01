@@ -51,7 +51,7 @@ groups는 그룹을 만들면 생성될 수 있는 엔트리가 될 것이고 gr
 
 먼저 세가지 버튼에 대해서 상태를 유지하고 그 값에 따라 아래 Action Bar를 선택하도록 해 보겠습니다.
 
-<img src="./doc_img/Serverless_group03.jpg" width="125" height="38">
+<img src="./doc_img/Serverless_group04.jpg" width="125" height="38">
 
 ```JavaScript
 class Buttons extends Component {
