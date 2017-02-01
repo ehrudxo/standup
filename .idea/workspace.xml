@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="173d434c-59dc-4f9d-a5eb-f8a98df0cae6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Buttons.js" afterPath="$PROJECT_DIR$/src/Buttons.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actions/Button.js" afterPath="$PROJECT_DIR$/src/actions/Button.js" />
     </list>
     <ignored path="standup.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -85,21 +82,32 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="4845">
-                <caret line="323" column="0" lean-forward="true" selection-start-line="323" selection-start-column="0" selection-end-line="323" selection-end-column="0" />
+              <first_editor relative-caret-position="210">
+                <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
                 <folding>
-                  <marker date="1485915120000" expanded="true" signature="2550:3750" ph="{...}" />
-                  <marker date="1485915120000" expanded="true" signature="2572:2646" ph="{...}" />
-                  <marker date="1485915120000" expanded="true" signature="2674:2838" ph="{...}" />
-                  <marker date="1485915120000" expanded="true" signature="2697:2834" ph="{...}" />
-                  <marker date="1485915120000" expanded="true" signature="2850:3748" ph="{...}" />
-                  <marker date="1485915120000" expanded="true" signature="2964:3738" ph="&lt;div/&gt;" />
-                  <marker date="1485915120000" expanded="true" signature="2976:3390" ph="&lt;div/&gt;" />
-                  <marker date="1485915120000" expanded="true" signature="3482:3717" ph="&lt;div/&gt;" />
-                  <marker date="1485915120000" expanded="true" signature="3795:3838" ph="{...}" />
-                  <marker date="1485915120000" expanded="true" signature="9499:9758" ph="&lt;Provider/&gt;" />
-                  <marker date="1485915120000" expanded="true" signature="9526:9746" ph="&lt;Router/&gt;" />
-                  <marker date="1485915120000" expanded="true" signature="9557:9734" ph="&lt;Route/&gt;" />
+                  <marker date="1485915220000" expanded="true" signature="5966:7715" ph="{...}" />
+                  <marker date="1485915220000" expanded="true" signature="6001:6102" ph="{...}" />
+                  <marker date="1485915220000" expanded="true" signature="6178:7709" ph="{...}" />
+                  <marker date="1485915220000" expanded="true" signature="6680:7185" ph="{...}" />
+                  <marker date="1485915220000" expanded="true" signature="6882:7177" ph="{...}" />
+                  <marker date="1485915220000" expanded="true" signature="7203:7592" ph="{...}" />
+                  <marker date="1485915220000" expanded="true" signature="7233:7584" ph="{...}" />
+                  <marker date="1485915220000" expanded="true" signature="7605:7638" ph="{...}" />
+                  <marker date="1485915220000" expanded="true" signature="8184:8350" ph="&lt;Dropzone/&gt;" />
+                  <marker date="1485915220000" expanded="true" signature="8487:8711" ph="{...}" />
+                  <marker date="1485915220000" expanded="true" signature="8538:8696" ph="{...}" />
+                  <marker date="1485915220000" expanded="true" signature="8597:8690" ph="{...}" />
+                  <marker date="1485915220000" expanded="true" signature="8619:8682" ph="{&quot;groupImage&quot;: downloadUrl...}" />
+                  <marker date="1485915220000" expanded="true" signature="8700:8709" ph="{...}" />
+                  <marker date="1485915220000" expanded="true" signature="8963:9223" ph="{...}" />
+                  <marker date="1485915220000" expanded="true" signature="8988:9221" ph="{...}" />
+                  <marker date="1485915220000" expanded="true" signature="9046:9216" ph="{...}" />
+                  <marker date="1485915220000" expanded="true" signature="9073:9210" ph="{...}" />
+                  <marker date="1485915220000" expanded="true" signature="9268:9404" ph="{...}" />
+                  <marker date="1485915220000" expanded="true" signature="9293:9402" ph="{...}" />
+                  <marker date="1485915220000" expanded="true" signature="9527:9786" ph="&lt;Provider/&gt;" />
+                  <marker date="1485915220000" expanded="true" signature="9554:9774" ph="&lt;Router/&gt;" />
+                  <marker date="1485915220000" expanded="true" signature="9585:9762" ph="&lt;Route/&gt;" />
                 </folding>
               </first_editor>
               <second_editor />
@@ -576,12 +584,12 @@
       <workItem from="1482913215757" duration="61392000" />
       <workItem from="1483941078007" duration="69539000" />
       <workItem from="1484647297634" duration="8571000" />
-      <workItem from="1485743412652" duration="9427000" />
+      <workItem from="1485743412652" duration="9514000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="187190000" />
+    <option name="totallyTimeSpent" value="187277000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -594,9 +602,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="633" y="23" width="640" height="710" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37318256" sideWeight="0.7613169" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37318256" sideWeight="0.7613169" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32981133" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3273906" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1007,21 +1015,32 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="4845">
-            <caret line="323" column="0" lean-forward="true" selection-start-line="323" selection-start-column="0" selection-end-line="323" selection-end-column="0" />
+          <first_editor relative-caret-position="210">
+            <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
             <folding>
-              <marker date="1485915120000" expanded="true" signature="2550:3750" ph="{...}" />
-              <marker date="1485915120000" expanded="true" signature="2572:2646" ph="{...}" />
-              <marker date="1485915120000" expanded="true" signature="2674:2838" ph="{...}" />
-              <marker date="1485915120000" expanded="true" signature="2697:2834" ph="{...}" />
-              <marker date="1485915120000" expanded="true" signature="2850:3748" ph="{...}" />
-              <marker date="1485915120000" expanded="true" signature="2964:3738" ph="&lt;div/&gt;" />
-              <marker date="1485915120000" expanded="true" signature="2976:3390" ph="&lt;div/&gt;" />
-              <marker date="1485915120000" expanded="true" signature="3482:3717" ph="&lt;div/&gt;" />
-              <marker date="1485915120000" expanded="true" signature="3795:3838" ph="{...}" />
-              <marker date="1485915120000" expanded="true" signature="9499:9758" ph="&lt;Provider/&gt;" />
-              <marker date="1485915120000" expanded="true" signature="9526:9746" ph="&lt;Router/&gt;" />
-              <marker date="1485915120000" expanded="true" signature="9557:9734" ph="&lt;Route/&gt;" />
+              <marker date="1485915220000" expanded="true" signature="5966:7715" ph="{...}" />
+              <marker date="1485915220000" expanded="true" signature="6001:6102" ph="{...}" />
+              <marker date="1485915220000" expanded="true" signature="6178:7709" ph="{...}" />
+              <marker date="1485915220000" expanded="true" signature="6680:7185" ph="{...}" />
+              <marker date="1485915220000" expanded="true" signature="6882:7177" ph="{...}" />
+              <marker date="1485915220000" expanded="true" signature="7203:7592" ph="{...}" />
+              <marker date="1485915220000" expanded="true" signature="7233:7584" ph="{...}" />
+              <marker date="1485915220000" expanded="true" signature="7605:7638" ph="{...}" />
+              <marker date="1485915220000" expanded="true" signature="8184:8350" ph="&lt;Dropzone/&gt;" />
+              <marker date="1485915220000" expanded="true" signature="8487:8711" ph="{...}" />
+              <marker date="1485915220000" expanded="true" signature="8538:8696" ph="{...}" />
+              <marker date="1485915220000" expanded="true" signature="8597:8690" ph="{...}" />
+              <marker date="1485915220000" expanded="true" signature="8619:8682" ph="{&quot;groupImage&quot;: downloadUrl...}" />
+              <marker date="1485915220000" expanded="true" signature="8700:8709" ph="{...}" />
+              <marker date="1485915220000" expanded="true" signature="8963:9223" ph="{...}" />
+              <marker date="1485915220000" expanded="true" signature="8988:9221" ph="{...}" />
+              <marker date="1485915220000" expanded="true" signature="9046:9216" ph="{...}" />
+              <marker date="1485915220000" expanded="true" signature="9073:9210" ph="{...}" />
+              <marker date="1485915220000" expanded="true" signature="9268:9404" ph="{...}" />
+              <marker date="1485915220000" expanded="true" signature="9293:9402" ph="{...}" />
+              <marker date="1485915220000" expanded="true" signature="9527:9786" ph="&lt;Provider/&gt;" />
+              <marker date="1485915220000" expanded="true" signature="9554:9774" ph="&lt;Router/&gt;" />
+              <marker date="1485915220000" expanded="true" signature="9585:9762" ph="&lt;Route/&gt;" />
             </folding>
           </first_editor>
           <second_editor />

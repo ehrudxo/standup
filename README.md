@@ -23,21 +23,21 @@ $npm install firebase firebaseui --save
 ```
 ## 1. 시작하기 전에
 
-<img src="./img/Serverless_group01.jpg" width="640" height="480">
+<img src="./doc_img/Serverless_group01.jpg" width="640" height="480">
 그림 1과 같은 역할을 하는 UI를 먼저 만들어 보려고 합니다. 기본 UI 기능은 그룹을 선택해야 할 수 있어야 하고 그룹을 만들 수 있어야 합니다. 그래서 선택을 할 수 있는 회전목마(Carousel) UI가 필요하고 그룹을 만들 수 있는 UI도 필요해서 새 그룹이라는 버튼을 달아 두었습니다.
 
 ## 2. 그룹 만들기
 그룹을 만들기 위해서는 당연히 기존의 firebase 에 저장된 스키마에 대한 조정이 필요하겠죠?
 
-<img src="./img/Serverless_group01-01.jpg" width="640" height="480">
+<img src="./doc_img/Serverless_group01-01.jpg" width="640" height="480">
 
 기존의 posts라는 스키마에는 모든 글이 저장되고 이 내용을 읽어와서 작업을 했었는데, 이제는 group 별로 조정할 일들이 생겼습니다.
 
-<img src="./img/Serverless_group01-02.jpg" width="322" height="304">
+<img src="./doc_img/Serverless_group01-02.jpg" width="322" height="304">
 
 groups는 그룹을 만들면 생성될 수 있는 엔트리가 될 것이고 group-posts에 각 그룹 별로 아티클이 들어갈 수 있도록 작업을 할 것입니다. 먼저 그룹을 생성하고 리스트 하는 작업을 해 보겠습니다. 생성을 하려면 다음과 같은 UI를 통해 그룹간 이동을 할 수 있습니다.
 
-<img src="./img/Serverless_group02.jpg" width="640" height="480">
+<img src="./doc_img/Serverless_group02.jpg" width="640" height="480">
 
 일단 이 일련의 작업들을 하는 세가지 버튼을 만들어 보겠습니다. 먼저 그룹 페이지에 처음 들어오게 되면 그룹에 해당하는 이미지가 보여지고 그룹 작업을 선택하면(1) 새 그룹을 만들 수 있어야 하며(3), 다른 그룹을 선택할 수도(4) 있어야 합니다. 글 쓰기 버튼을 선택하면(2) 글 쓰기를 할 수 있는 에디터가 나와서 글이 작성되어야 하며 여러가지 모든 상황에서 원래 그룹으로 원상복귀(5)할 수 도 있어야 합니다.
 
@@ -47,11 +47,11 @@ groups는 그룹을 만들면 생성될 수 있는 엔트리가 될 것이고 gr
 2. 내부에서 “선택" 버튼을 누를 경우는 URL이 변경되어야 합니다.
 3. “글쓰기” 를 작성하면 URL은 변경되지 않지만 버튼의 state는 변경되어야 합니다.
 
-<img src="./img/Serverless_group03.jpg" width="640" height="480">
+<img src="./doc_img/Serverless_group03.jpg" width="640" height="480">
 
 먼저 세가지 버튼에 대해서 상태를 유지하고 그 값에 따라 아래 Action Bar를 선택하도록 해 보겠습니다.
 
-<img src="./img/Serverless_group03.jpg" width="125" height="38">
+<img src="./doc_img/Serverless_group03.jpg" width="125" height="38">
 
 ```JavaScript
 class Buttons extends Component {
@@ -160,7 +160,7 @@ export default function getButtons(state,action){
 ### 2.1. 그룹 만들기
 자, 그럼 그룹은 어떻게 만들까요?
 
-<img src="./img/Serverless_group05.jpg" width="262" height="151">
+<img src="./doc_img/Serverless_group05.jpg" width="262" height="151">
 
 그룹명이 존재하는지 (1)중복 확인을 한 후에 (2)드래그앤 드롭을 통한 파일 업로드, (3)그룹생성 의 순서대로 이루어집니다.
 
