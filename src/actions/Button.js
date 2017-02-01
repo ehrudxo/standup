@@ -8,12 +8,12 @@ export function selectButton( button ){
   return {
     type : BUTTON,
     selectedButton : button,
-    defaultButtonStyle: _selectButtonStyle(button).style_d,
-    groupButtonStyle: _selectButtonStyle(button).style_g,
-    editButtonStyle: _selectButtonStyle(button).style_e
+    defaultStyle: _selectStyle(button).style_d,
+    groupStyle: _selectStyle(button).style_g,
+    editStyle: _selectStyle(button).style_e
   }
 }
-function _selectButtonStyle(button){
+function _selectStyle(button){
   switch(button){
     case 'groups':
       return {

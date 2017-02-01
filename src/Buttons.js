@@ -25,15 +25,14 @@ class Buttons extends Component {
     }
   }
   render() {
-    const {logoUrl,groupName,selectedButton,defaultButtonStyle,groupButtonStyle,editButtonStyle} = this.props;
+    const {logoUrl,groupName,selectedButton,defaultStyle,groupStyle,editStyle} = this.props;
     return (
       <div>
-
       <div className="buttons">
         <Profile/>
-        <a onClick={()=>this.selectButton('edit')}><i className="fa fa-pencil-square fa-lg" style={editButtonStyle}></i></a>
-        <a onClick={()=>this.selectButton('groups')}><i className="fa fa-handshake-o fa-lg" style={groupButtonStyle}></i></a>
-        <a onClick={()=>this.selectButton()}><i className="fa fa-window-minimize fa-lg" style={defaultButtonStyle}></i></a>
+        <a onClick={()=>this.selectButton('edit')}><i className="fa fa-pencil-square fa-lg" style={editStyle}></i></a>
+        <a onClick={()=>this.selectButton('groups')}><i className="fa fa-handshake-o fa-lg" style={groupStyle}></i></a>
+        <a onClick={()=>this.selectButton()}><i className="fa fa-window-minimize fa-lg" style={defaultStyle}></i></a>
       </div>
       {this.renderActionBar(selectedButton)}
       {groupName && !selectedButton&&
