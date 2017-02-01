@@ -12,6 +12,8 @@
 3. 김개발이 작성한 글이 목록으로 보여진다. 이렇게 함으로써 다른 사람들이 목록을 확인할 수 있다.
  * 목록글은 해당IT 주제의 대표 이미지와 제목, 간단 요약등이 들어 있는 카드의 리스트 형태로 나열이 되어야 한다.
 4. 김개발은 google ID를 가지고 로그인을 할 수 있다. 이렇게 함으로써 내가 쓴 글만 따로 모아서 볼 수 있다.
+5. 김개발은 그룹 별로 스탠드업을 만들 수 있고 각 그룹별고 글을 올릴 수 있다
+
 
 ## 설명
 
@@ -52,7 +54,9 @@ Day 0 이외에는 각 브랜치에 진행사항에 대한 설명이 있습니�
 
   https://github.com/ehrudxo/standup/tree/day6
 
-* Day 7. user story 4 - Group(작성중)
+* Day 7. user story 4 - Group
+  
+  https://github.com/ehrudxo/standup/tree/day7
 
 ### 설치
 ```
