@@ -14,6 +14,5 @@ build
 .env
 .idea
 npm-debug.log
-.idea/workspace.xml
 
 src/FileUtil.js
