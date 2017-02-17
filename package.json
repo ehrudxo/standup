@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://ehrudxo.github.io/standup",
   "devDependencies": {
+    "eslint-plugin-react": "^6.10.0",
     "react-scripts": "0.7.0"
   },
   "dependencies": {
