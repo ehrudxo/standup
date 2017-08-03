@@ -13,9 +13,9 @@ export function userArticles() {
 * 여기부터
 */
 export function getArticles(articles){
-  var items = [];
+  const items = [];
   articles.forEach(function(article){
-    var item = article.val();
+    const item = article.val();
     item['key'] = article.key;
     items.push(item);
   })

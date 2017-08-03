@@ -179,7 +179,7 @@ export default function fileupload(files,size, callback){
     else alert("지정된 파일 갯수랑 같지 않습니다.")
     return;
   }
-  var storageRef = firebase.storage().ref();
+  const storageRef = firebase.storage().ref();
   files.forEach(function(file){
     //확장자
     let ext = file.name.split('.').pop();
@@ -189,13 +189,13 @@ export default function fileupload(files,size, callback){
     if( ext === 'gif' ) metadata.contentType = 'image/gif';
 
     // 이미지와 메타데이타를
-    var uploadTask = storageRef.child('images/' + file.name).put(file, metadata);
+    const uploadTask = storageRef.child('images/' + file.name).put(file, metadata);
 
     // 상태변화를 감지하고 에러가 나거나 완료가 되면 콜백함수를 호출한다
     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // '상태변화'감지
       function(snapshot) {
         // 프로그레스 계산. 전체 보내는 양을
-        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         console.log('Upload is ' + progress + '% done');
         switch (snapshot.state) {
           case firebase.storage.TaskState.PAUSED: // '정지'
@@ -235,10 +235,8 @@ export default function fileupload(files,size, callback){
 주목 하셔야 할 부분은 다음의 storageRef 입니다.
 
 ```JavaScript
-//storageRef 정의
-var storageRef = firebase.storage().ref();
 // 업로드
-var uploadTask = storageRef.child('images/' + file.name).put(file, metadata);
+const uploadTask = storageRef.child('images/' + file.name).put(file, metadata);
 // 이벤트 정의
 uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,... (중략)
 ```

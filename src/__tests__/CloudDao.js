@@ -3,10 +3,10 @@ import firebase from 'firebase'
 import FirebaseDao from '../FirebaseDao'
 import config from '../config'
 import Article from './Article';
-var article1 = Article();
-var dao = new FirebaseDao(config);
-var keys=[];
-var emailreg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+const article1 = Article();
+const dao = new FirebaseDao(config);
+const keys=[];
+const emailreg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
 let user1 = {
   uuid :"uuid",
@@ -15,7 +15,7 @@ let user1 = {
   photoURL : "http://멀리.com"
 }
 it('Object assign', function(){
-  var article2 = Object.assign({},article1);
+  const article2 = Object.assign({},article1);
   article2.user = "Genji";
   article2.content = "다음";
   article2.cardInfo.url = "http://www.daum.net";
@@ -54,12 +54,12 @@ describe('check group exists',()=>{
 //   dao.list(25,(articles)=>{
 //     articles.forEach((article)=>{
 //       keys.push(article.key);
-//       var article_v = article.val();
+//       const article_v = article.val();
 //       expect(article_v.user).toEqual("Genji");
 //     })
 //   });
 // })
-// var key;
+// let key;
 // it('upload article and edit',async ()=>{
 //   key = dao.newKey();
 //   const promise1 = await dao.update( key, article1 );

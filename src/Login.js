@@ -14,7 +14,7 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    var uiConfig = {
+    const uiConfig = {
       callbacks: {
         signInSuccess: (currentUser, credential, redirectUrl)=> {
           this.dao.addUserTx({

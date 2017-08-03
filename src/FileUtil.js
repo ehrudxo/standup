@@ -9,7 +9,6 @@ export default function fileupload(files,size, callback){
     else alert("지정된 파일 갯수랑 같지 않습니다.")
     return;
   }
-  var storageRef = firebase.storage().ref();
   files.forEach(function(file){
     let ext = file.name.split('.').pop();
     let metadata = {};
@@ -18,13 +17,13 @@ export default function fileupload(files,size, callback){
     if( ext === 'gif' ) metadata.contentType = 'image/gif';
 
     // Upload file and metadata to the object 'images/mountains.jpg'
-    var uploadTask = storageRef.child('images/' + file.name).put(file, metadata);
+    const uploadTask = firebase.storage().ref().child('images/' + file.name).put(file, metadata);
 
 // Listen for state changes, errors, and completion of the upload.
     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
       function(snapshot) {
         // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         console.log('Upload is ' + progress + '% done');
         switch (snapshot.state) {
           case firebase.storage.TaskState.PAUSED: // or 'paused'

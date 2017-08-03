@@ -111,7 +111,7 @@ export default class FirebaseDao {
         //get user mail seconds
         let uid = this.currentUser.uid;
         //then update
-        var updates = {};
+        const updates = {};
         postData.key = key;
         updates['/group-posts/' + groupKey+ "/"+key] = postData;
         updates['/user-posts/' + uid + "/"+key] = postData;

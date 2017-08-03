@@ -106,7 +106,7 @@ class Editor extends Component {
     });
   }
   detectURL(text){
-    var urls = text.match(/(https?:\/\/[^\s]+)/g)||text.match(/(www.[^\s]+)/g);
+    const urls = text.match(/(https?:\/\/[^\s]+)/g)||text.match(/(www.[^\s]+)/g);
     if(urls && urls.length>0) return urls[0];
     else return undefined;
   }
