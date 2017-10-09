@@ -1,0 +1,41 @@
+.group-add{
+    position: relative;
+    top:-125px;
+    background-color: white;
+    height: 155px;
+    left:5px;
+    color : #AAA;
+}
+.drop-file{
+    margin-top: 5px;
+    height:75px;
+    width:90%;
+    border: 2px dotted #AAA;
+    margin-left: 5%;
+    top:17px;
+}
+.group-add-title{
+    width: 60%;
+    height: 20px;
+    border: 1px solid #AAA;
+     margin-left: 5%;
+    /* margin-top: -15px; */
+    /* text-align: left; */
+    display: inline;
+    position: absolute;
+    /* float: left; */
+    left: 0px;
+}
+.check-exists{
+    width: 25%;
+    height: 20px;
+    position: absolute;
+    display: inline;
+    left: 67%;
+    margin: 1px 0px 0px 0px;
+}
+.wrap-title{
+    width: 100%;
+    height: 20px;
+    padding-top: 7px;
+}

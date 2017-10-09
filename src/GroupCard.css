@@ -1,0 +1,23 @@
+.style_bg {
+    height : 130px;
+    overflow : hidden;
+}
+.style_img {
+    width:100%;
+}
+.style_title {
+    background-color :rgba(79, 73, 75, 0.72);
+    position :absolute;
+    bottom:0;
+    height :30px;
+    display : block;
+    text-align: left;
+    font-size: 30px;
+    color : white;
+}
+.style_chk {
+    float:right;
+    display:inline;
+    width: 50px;
+    height:20px;
+}

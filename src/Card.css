@@ -1,0 +1,90 @@
+.card{
+  color: #222;
+  text-decoration: none;
+  position: relative;
+  border: 1px solid rgba(79, 73, 75, 0.28);
+  display: block;
+  overflow: hidden;
+  margin: 12px 12px 12px 12px;
+  min-height: 83px;
+  font-size: 10px;
+}
+.card_image{
+  overflow: hidden;
+  left: 0;
+  top: 0;
+  max-height: 180px;
+}
+.card_image_small{
+  width: 83;
+  height: 83;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.width100{
+  width: 100%;
+  height:auto;
+  background-size: 100% 100%;
+}
+.card_text_noneImage{
+  display: none;
+}
+.card_img{
+  height: 100%;
+  transform: translateX(-50%);
+  position: relative;
+  left: 50%;
+  border-bottom: 1px solid rgba(79, 73, 75, 0.28);
+}
+.card_img_small{
+  position: relative;
+  border-right: 1px solid rgba(79, 73, 75, 0.28);
+}
+.card_text{
+  margin-left: 5px;
+  min-height: 80px;
+  padding: 5px;
+  box-sizing: border-box
+}
+.card_text_small{
+  margin-left: 88px;
+  height: 83px;
+  padding: 5px;
+  box-sizing: border-box;
+
+}
+.card_text_noneImage{
+  margin-left: 5px;
+  min-height: 80px;
+  padding: 5px;
+  box-sizing: border-box
+}
+.card_title{
+  margin: 0;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card_desc{
+  margin: 5px 0 0;
+  font-size: 11px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* 여러 줄 자르기 추가 스타일 */
+  white-space: normal;
+  line-height: 1;
+  height: 3em;
+}
+.card_provider {
+  margin: 5px 0 0;
+  font-size: 10px
+}
+.borderTop{
+  border-top: 1px solid rgba(79, 73, 75, 0.28);
+}

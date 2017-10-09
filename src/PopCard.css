@@ -1,0 +1,22 @@
+.card_pop {
+    position: absolute;
+    border: 1px solid #AAA;
+    top: 105px;
+    left: 10px;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 3px -2px 4px #AAA;
+    z-index: 30;
+}
+
+.card_pop_arrow {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid white;
+    width: 0;
+    height: 0;
+    -webkit-filter: drop-shadow(0 -2px 2px #AAA);
+}

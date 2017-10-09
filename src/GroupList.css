@@ -1,0 +1,29 @@
+.group-chooser{
+    background-color : #F2F2F2;
+    height: 165px;
+    border-top: 1px solid #CCC;
+    /*border-bottom: 1px solid #CCC;*/
+    width:100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.slick-prev {
+    left: 25px;
+}
+.slick-next {
+    right: 25px;
+}
+.slick-next:before, .slick-prev:before {
+    font-size: 30px;
+    line-height: 1;
+    opacity: 1;
+    color: #CCC;
+}
+.groupAddBtn{
+    bottom:0px;
+    left: 2px;
+    position: relative;
+    float: left;
+    width: 60px;
+    height:20px;
+}

@@ -1,0 +1,38 @@
+{
+  "name": "standup",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://ehrudxo.github.io/standup",
+  "devDependencies": {
+    "eslint-plugin-react": "^6.10.0",
+    "react-scripts": "0.7.0"
+  },
+  "dependencies": {
+    "axios": "^0.15.2",
+    "firebase": "^3.6.4",
+    "firebaseui": "^1.0.0",
+    "gh-pages": "^0.11.0",
+    "little-loader": "^0.2.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-dropzone": "^3.8.0",
+    "react-redux": "^4.4.6",
+    "react-router": "^3.0.0",
+    "react-router-redux": "^4.0.7",
+    "react-slick": "^0.14.5",
+    "redux": "^3.6.0",
+    "redux-devtools": "^3.3.1",
+    "redux-devtools-dock-monitor": "^1.1.1",
+    "redux-devtools-log-monitor": "^1.1.1",
+    "redux-thunk": "^2.1.0",
+    "slick-carousel": "^1.6.0",
+    "superagent": "^2.3.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build"
+  }
+}

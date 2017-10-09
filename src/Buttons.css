@@ -1,0 +1,10 @@
+.buttons{
+    height: 50px;
+    padding-right:10px;
+}
+.buttons i{
+    color :#aaa;
+    padding : 10px;
+    float : right;
+    margin: 15px 0px 0px 0px;
+}
